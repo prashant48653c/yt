@@ -48,7 +48,8 @@ const Vidplayer = ({ clickedVideoId }) => {
       (videoComment) => {
         console.log(videoComment)
         setcomments(videoComment.items)
-      s
+        
+      
         
       }
     );
