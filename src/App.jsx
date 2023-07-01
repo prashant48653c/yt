@@ -19,6 +19,8 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [clickedVideoId, setClickedVideoId] = useState("");
 const [change, setchange] = useState(true)
+const [channalidvalue, setchannalidvalue] = useState('')
+const [channalDetail, setchannalDetail] = useState([])
   useEffect(() => {
     
     if(change){
@@ -34,17 +36,37 @@ const [change, setchange] = useState(true)
    
   }, [setClickedVideoId]);
 
+
+useEffect(()=>{
+if(channalidvalue){
+  fetchData(`channels?part=snippet%2Cstatistics&id=${channalidvalue}`).then((res)=>{
+
+    const info=res.items[0];
+    setchannalDetail(info)
+    
+    
+      })
+}
+
+},[channalidvalue])
+
+
   
 
-  function getDataVidpage(data) {
+  function getDataVidpage(data,channalID) {
     const fromVidpageId = data;
-    console.log(fromVidpageId);
+    const fromVidpageChannalId=channalID;
+  
+   
     setClickedVideoId(fromVidpageId);
+    setchannalidvalue(fromVidpageChannalId)
   }
+
+ 
 
   function getDataResult(data){
     const fromResult=data
-    console.log(fromResult)
+  
 
     setClickedVideoId(fromResult)
   }
@@ -58,7 +80,7 @@ const [change, setchange] = useState(true)
     <>
       <Router>
         <AppContext.Provider
-          value={{ setselectedCategory, selectedCategory,setvideos, videos,setchange,change }}
+          value={{ setselectedCategory, selectedCategory,setvideos, videos,setchange,change,channalDetail,setchannalidvalue }}
         >
           
           <Navbar
@@ -105,15 +127,20 @@ const [change, setchange] = useState(true)
               }
             />
 
+
+{
+  console.log(channalDetail)
+}
             <Route
               path="/channal"
               element={
                 <section className="channel-page">
-                  <Channel videos={videos} />
+                  <Channel channalidvalue={channalidvalue} channalDetail={channalDetail} />
                 </section>
               }
             />
           </Routes>
+
         </AppContext.Provider>
       </Router>
     </>

@@ -1,12 +1,24 @@
 import React from "react";
 import { useContext, useState, useEffect } from "react";
 import { AppContext } from "./App";
+import gurenge from "/gurenge.jpg";
+
 import { fetchData } from "./fetch";
 import Vidpage from "./Vidpage";
 import Vidsuggestion from "./Vidsuggestion";
 import { Link } from "react-router-dom";
+import Comment from "./Comment";
 
 const Vidplayer = ({ clickedVideoId }) => {
+
+
+
+const {setchannalidvalue}=useContext(AppContext)
+
+
+
+
+
   const [suggestedvideos, setsuggestedvideos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [videoid, setvideoid] = useState(clickedVideoId);
@@ -18,7 +30,8 @@ const Vidplayer = ({ clickedVideoId }) => {
   const [channalName, setchannalName] = useState('')
   const [view, setview] = useState('')
   const [time, settime] = useState('')
-
+  const [channalid, setchannalid] = useState('')
+const [totalcomment, settotalcomment] = useState('')
 
   const [comments, setcomments] = useState([]);
 
@@ -33,7 +46,10 @@ const Vidplayer = ({ clickedVideoId }) => {
      setvideotitle(detail.items[0].snippet.localized.title)
      setchannalName(detail.items[0].snippet.channelTitle)
      setview(detail.items[0].statistics.viewCount)
+     settotalcomment(detail.items[0].statistics.commentCount)
      settime(detail.items[0].snippet.publishedAt)
+     setchannalid(detail.items[0].snippet.channelId)
+     console.log(detail.items)
     });
 
     fetchData(`search?relatedToVideoId=${newid}&part=id%2Csnippet`).then(
@@ -46,10 +62,9 @@ const Vidplayer = ({ clickedVideoId }) => {
 
     fetchData(`commentThreads?part=snippet&videoId=${newid}&maxResults=100`).then(
       (videoComment) => {
-        console.log(videoComment)
-        setcomments(videoComment.items)
-        
       
+        setcomments(videoComment.items)
+    
         
       }
     );
@@ -94,7 +109,7 @@ const Vidplayer = ({ clickedVideoId }) => {
 
                 <div>
 
-                  <h3 className="channel-name-vidplayer">{channalName}</h3>
+                  <h3 className="channel-name-vidplayer"  onClick={setchannalidvalue(channalid)} >{channalName}</h3>
                   <em>1.4M Subscribers</em>
                 </div>
 
@@ -130,6 +145,42 @@ const Vidplayer = ({ clickedVideoId }) => {
               </details>
             </div>
           </div>
+
+
+
+
+
+{/* comments will start from here */}
+
+
+
+          <div className="startcomment">
+  {totalcomment} Comments
+</div>
+
+<section className="comment-section">
+
+	<div className="write-comment">
+		<img className="user-img current-user-img" src={gurenge} />
+		<div className="comment-sent">
+
+		<input className="add-comment" placeholder="Write a comment"/>
+			<button className="post-btn">Comment</button>
+		</div>
+	</div>
+	<hr/>
+{
+
+  (comments !== undefined) &&
+    comments.map((comment,i)=>{
+   return   <Comment key={i} comment={comment} />
+  
+    })
+  
+  
+}
+
+  </section>
         </section>
       </article>
       <aside className="suggestion-vidplayer">
@@ -143,7 +194,7 @@ const Vidplayer = ({ clickedVideoId }) => {
             <Link to="/vidplayer" key={i}>
               <Vidsuggestion
                 video={video}
-                getDataVidsuggestion={getDataVidsuggestion}
+               getDataVidsuggestion={getDataVidsuggestion}
               />
             </Link>
           );

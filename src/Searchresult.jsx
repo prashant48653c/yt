@@ -59,7 +59,7 @@ const Searchresult = ({ selectedCategory,videos,setvideos,getDataResult }) => {
         />
         <div className="result-text">
           <h4 className="vid-title-suggestion vid-title-result">
-          {vid.snippet.title}
+      {vid.snippet.title}
           </h4>
           <div className="vid-detail-suggestion channel-info">
             <ion-icon
