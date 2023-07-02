@@ -15,6 +15,7 @@ const [statitic, setstatitic] = useState([])
 const [channalVideos,setchannalVideos]=useState([])
 
 useEffect(()=>{
+  
  if ( channalDetail && channalDetail.snippet  && channalDetail.statistics) {
   setaboutChannal(channalDetail.snippet.localized.description)
       setchannalName(channalDetail.snippet.title);
@@ -30,7 +31,8 @@ useEffect(()=>{
 
 
 useEffect(()=>{
-  if(channalidvalue){
+  if(channalidvalue && channalDetail ){
+    console.log(channalidvalue , 'channal video')
     fetchData(`search?channelId=${channalidvalue}&part=snippet%2Cid&order=date`).then((res)=>{
       console.log(res.items)
       setchannalVideos(res.items)
@@ -38,7 +40,7 @@ useEffect(()=>{
     })
   }
   
-},[channalidvalue,channalDetail])
+},[channalDetail])
   return (
     <>
     

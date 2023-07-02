@@ -18,78 +18,70 @@ function App() {
   const [videos, setvideos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [clickedVideoId, setClickedVideoId] = useState("");
-const [change, setchange] = useState(true)
-const [channalidvalue, setchannalidvalue] = useState('')
-const [channalDetail, setchannalDetail] = useState([])
+  const [change, setchange] = useState(true);
+  const [channalidvalue, setchannalidvalue] = useState("");
+  const [channalDetail, setchannalDetail] = useState([]);
   useEffect(() => {
-    
-    if(change){
+    if (change) {
       fetchData(`search?part=snippet&q=${selectedCategory}`).then((res) => {
         setvideos(res.items);
         setIsLoading(false);
         console.log("Data got succesfully");
-        setchange(false)
+        setchange(false);
       });
     }
-
-  
-   
   }, [setClickedVideoId]);
 
+  useEffect(() => {
 
-useEffect(()=>{
-if(channalidvalue){
-  fetchData(`channels?part=snippet%2Cstatistics&id=${channalidvalue}`).then((res)=>{
+    if (channalidvalue) {
+      console.log(channalidvalue ,'from app ')
+      fetchData(`channels?part=snippet%2Cstatistics&id=${channalidvalue}`).then(
+        (res) => {
+          const info = res.items[0];
+          setchannalDetail(info);
+        }
+      );
+    }
+  }, [channalidvalue]);
 
-    const info=res.items[0];
-    setchannalDetail(info)
-    
-    
-      })
-}
-
-},[channalidvalue])
-
-
-  
-
-  function getDataVidpage(data,channalID) {
+  function getDataVidpage(data, channalID) {
     const fromVidpageId = data;
-    const fromVidpageChannalId=channalID;
-  
-   
+    const fromVidpageChannalId = channalID;
+
     setClickedVideoId(fromVidpageId);
-    setchannalidvalue(fromVidpageChannalId)
+    setchannalidvalue(fromVidpageChannalId);
   }
 
- 
+  function getDataResult(data) {
+    const fromResult = data;
 
-  function getDataResult(data){
-    const fromResult=data
-  
-
-    setClickedVideoId(fromResult)
+    setClickedVideoId(fromResult);
   }
-
 
   if (isLoading) {
     return <div>loading</div>;
   }
-  
+
   return (
     <>
       <Router>
         <AppContext.Provider
-          value={{ setselectedCategory, selectedCategory,setvideos, videos,setchange,change,channalDetail,setchannalidvalue }}
+          value={{
+            setselectedCategory,
+            selectedCategory,
+            setvideos,
+            videos,
+            setchange,
+            change,
+            channalDetail,
+            setchannalidvalue,
+          }}
         >
-          
           <Navbar
             selectedCategory={selectedCategory}
             setselectedCategory={setselectedCategory}
           />
-
-
-         
 
           <Routes>
             <Route
@@ -118,29 +110,30 @@ if(channalidvalue){
             <Route
               path="/result"
               element={
-             <Link to="/vidplayer" >
-             <Searchresult
-                  selectedCategory={selectedCategory} setvideos={setvideos} getDataResult={getDataResult} 
-                  videos={videos}    />
-             </Link>    
-             
+                <Link to="/vidplayer">
+                  <Searchresult
+                    selectedCategory={selectedCategory}
+                    setvideos={setvideos}
+                    getDataResult={getDataResult}
+                    videos={videos}
+                  />
+                </Link>
               }
             />
 
-
-{
-  console.log(channalDetail)
-}
+            {console.log(channalDetail)}
             <Route
               path="/channal"
               element={
                 <section className="channel-page">
-                  <Channel channalidvalue={channalidvalue} channalDetail={channalDetail} />
+                  <Channel
+                    channalidvalue={channalidvalue}
+                    channalDetail={channalDetail}
+                  />
                 </section>
               }
             />
           </Routes>
-
         </AppContext.Provider>
       </Router>
     </>
