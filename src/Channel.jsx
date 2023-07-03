@@ -5,14 +5,15 @@ import Vidpage from "./Vidpage";
 import { AppContext } from "./App";
 import { fetchData } from "./fetch";
 
-const Channel = ({channalidvalue,channalDetail}) => {
+const Channel = ({channalidvalue,channalDetail,channalVideos}) => {
+
+  const {setClickedVideoId}=useContext(AppContext)
 
 const [aboutChannal, setaboutChannal] = useState([])
 const [channalName, setchannalName] = useState('')
 const [bannerImg, setbannerImg] = useState('')
 const [profile, setprofile] = useState('')
 const [statitic, setstatitic] = useState([])
-const [channalVideos,setchannalVideos]=useState([])
 
 useEffect(()=>{
   
@@ -30,28 +31,18 @@ useEffect(()=>{
 
 
 
-useEffect(()=>{
-  if(channalidvalue && channalDetail ){
-    console.log(channalidvalue , 'channal video')
-    fetchData(`search?channelId=${channalidvalue}&part=snippet%2Cid&order=date`).then((res)=>{
-      console.log(res.items)
-      setchannalVideos(res.items)
-  
-    })
-  }
-  
-},[channalDetail])
+
   return (
     <>
     
         <div className="cover">
           <div className="channel-cover">
-           <img src={bannerImg} className="channel-cover-img" /> 
+           <img src={bannerImg} loading="lazy" className="channel-cover-img" /> 
 
           </div>
 
           <div className="channel-logo-info">
-            <img className="channel-profile" src={profile} />
+            <img className="channel-profile" loading="lazy" src={profile} />
 
             <div className="channel-short-info">
               <div>
@@ -82,29 +73,33 @@ useEffect(()=>{
 
             return  (
 
-              <section className="video" key={i} >
+              <Link to='/vidplayer' key={i} >
+                <section className="video" onClick={()=> setClickedVideoId(vid.id.videoId)}  >
            
-              <img
-                src={vid.snippet.thumbnails.high.url}
-                alt="thumbnail"
-                className="port-image suggestion-img"
-              />
-              <div className="vid-info">
-               
-                <div>
-                  <h4 className="vid-title">
-                     {vid.snippet.title.length < 55
-                      ? vid.snippet.title
-                      : vid.snippet.title.slice(0, 55) + "..."} 
-                  </h4>
-        
-                  <div className="vid-detail">
-                    
-                    <p className="para">38M view ' 2 years ago</p>
-                  </div>
-                </div>
-              </div>
-            </section>
+           <img  loading="lazy"
+             src={vid.snippet.thumbnails.high.url}
+             alt="thumbnail"
+             className="port-image suggestion-img"
+           />
+           <div className="vid-info">
+            
+             <div>
+               <h4 className="vid-title">
+                  {vid.snippet.title.length < 55
+                   ? vid.snippet.title
+                   : vid.snippet.title.slice(0, 55) + "..."} 
+               </h4>
+     
+               <div className="vid-detail">
+                 
+                 <p className="para">38M view ' 2 years ago</p>
+               </div>
+             </div>
+           </div>
+         </section>
+              </Link>
+
+            
             )
           
 

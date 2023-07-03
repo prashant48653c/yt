@@ -21,6 +21,9 @@ position: relative;
 	height: 100vh;
 	width: 100%;
 }
+
+
+
 .sidebar{
 	
 	z-index: 111;
@@ -112,10 +115,12 @@ margin: 1rem;
     gap: 1.6rem;
 }
 .video{
+	padding-bottom: 1rem;
+	overflow: hidden;
+
 	background-color: rgb(20, 19, 19);
 	cursor: pointer;
 width:37rem;
-padding-bottom: .6rem;
 	min-height: 30rem;
 	max-height: 100%;
 	border-radius: 1rem;
@@ -163,12 +168,20 @@ button{
 button:hover{
 	background: var(--hov-black);
 }
+.no{
+	overflow: hidden;
+	height: 30rem;
+	width: 37rem;
+padding-bottom: .6rem;
+
+}
 .port-image{
 	width: 100%;
-min-height: 100%;
-	max-height: 100%;
+    height: 100%;
 	border-radius: 1.4rem;
 	transition: all .2s linear;
+	object-fit: cover;
+	object-position: center;
 
 }
 .port-image:hover{
@@ -439,12 +452,13 @@ border-radius: 1.6rem;
 	.channel-cover{
 		width: 100%;
 		height: 40vh;
-		object-fit: cover;
+		overflow: hidden;
 	}
 	.channel-cover-img{
 	background-attachment: fixed;
 		width: 100%;
 		height: 100%;
+		object-fit: cover;
 	}
 	.channel-profile{
 		border-radius: 100%;
@@ -473,6 +487,7 @@ border-radius: 1.6rem;
 		justify-content: center;
 		align-items: flex-start;
 		padding: 1rem 2rem;
+		overflow: hidden;
 	}
 
 	/* comments

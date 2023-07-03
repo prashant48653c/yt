@@ -1,5 +1,7 @@
 import React from 'react'
 
+
+
 import gurenge from '/gurenge.jpg'
 const Comment = ({comment}) => {
   return (
@@ -12,7 +14,7 @@ const Comment = ({comment}) => {
 		<div className="comment">
 		<p className="username">{comment.snippet.topLevelComment.snippet.authorDisplayName} </p>
 
-			<p>{comment.snippet.topLevelComment.snippet.textDisplay}</p>
+			<p>{comment.snippet.topLevelComment.snippet.textDisplay.slice(0, 285) + "..."}</p>
 		</div>
 	</div>
 

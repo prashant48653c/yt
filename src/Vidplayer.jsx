@@ -8,6 +8,8 @@ import Vidpage from "./Vidpage";
 import Vidsuggestion from "./Vidsuggestion";
 import { Link } from "react-router-dom";
 import Comment from "./Comment";
+import {HiUserCircle} from "react-icons/hi2";
+
 
 const Vidplayer = ({ clickedVideoId }) => {
 
@@ -88,7 +90,7 @@ const [totalcomment, settotalcomment] = useState('')
               className="port-image-vidplayer"
               src={`https://www.youtube.com/embed/${videoid}`}
               title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="lazy"
               allowFullScreen
             ></iframe>
           </div>
@@ -101,10 +103,7 @@ const [totalcomment, settotalcomment] = useState('')
               <Link to='/channal'>
               
               <div className="channel-vidplayer">
-                <ion-icon
-                  name="person-circle-outline"
-                  className="icons"
-                ></ion-icon>
+              <HiUserCircle size={20} className="icons" ></HiUserCircle>
 
 
                 <div>

@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { fetchData } from "./fetch";
 import Vidplayer from "./Vidplayer";
 import gurenge from "/gurenge.jpg";
+import {HiUserCircle} from "react-icons/hi2";
 
 const Vidsuggestion = ({ video, getDataVidsuggestion }) => {
 
@@ -23,21 +24,23 @@ const Vidsuggestion = ({ video, getDataVidsuggestion }) => {
   const channalOnclick=(e)=>{
     const channalid=video.snippet.channelId;
     setchannalidvalue(channalid)
-    console.log(channalid)
+    console.log(channalid ,'from suggestion')
   }
 
   return (
     <>
       <div className="video-vidplayer-suggestion" onClick={handleOnClick}>
         <img
-          src={video.snippet.thumbnails.high.url}
+          src={video.snippet.thumbnails.high.url} loading="lazy"
           alt="vidd"
           className="port-image-suggestion"
         />
         <div>
-          <h4 className="vid-title-suggestion">{video.snippet.title}</h4>
+          <h4 className="vid-title-suggestion">{video.snippet.title.slice(0, 55) + "..."}</h4>
           <div className="vid-detail-suggestion">
-            <Link to="/channal"  onClick={channalOnclick} >{video.snippet.channelTitle}</Link>
+            <Link to="/channal"  onClick={channalOnclick} > 
+            <HiUserCircle size={20} className="icon" ></HiUserCircle>
+            {video.snippet.channelTitle}</Link>
             <p className="para">38M view ' 2 years ago</p>
           </div>
         </div>

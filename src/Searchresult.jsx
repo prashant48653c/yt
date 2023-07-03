@@ -3,8 +3,11 @@ import { useContext } from "react";
 import { AppContext } from "./App";
 import gurenge from "/gurenge.jpg";
 import { fetchData } from "./fetch";
+import { Link } from "react-router-dom";
+import {HiUserCircle} from "react-icons/hi2";
 
 const Searchresult = ({ selectedCategory,videos,setvideos,getDataResult }) => {
+  const {setchannalidvalue}=useContext(AppContext)
 
   const [vidid, setvidid] = useState('')
 	const {setchange} = useContext(AppContext)
@@ -52,7 +55,7 @@ const Searchresult = ({ selectedCategory,videos,setvideos,getDataResult }) => {
 
       <article className="search-result" key={i}  onClick={handleOnClick} >
       <div className="video-vidplayer-suggestion result-vid">
-        <img
+        <img loading="lazy"
           src={vid.snippet.thumbnails.high.url}
           alt=""
           className="port-image-suggestion img-result"
@@ -62,18 +65,16 @@ const Searchresult = ({ selectedCategory,videos,setvideos,getDataResult }) => {
       {vid.snippet.title}
           </h4>
           <div className="vid-detail-suggestion channel-info">
-            <ion-icon
-              name="person-circle-outline"
-              className="icon channel-logo"
-            ></ion-icon>
-            <a href="#">{vid.snippet.channelTitle}</a>
+           
+            <Link to="/channal" onClick={ ()=> setchannalidvalue(vid.snippet.channelId)} >
+            <HiUserCircle size={20} className="icon channel-logo" ></HiUserCircle>
+              {vid.snippet.channelTitle}</Link>
           </div>
           <p className="para">38M view ' 2 years ago</p>
 
           <p className="info">
             
-            Ionicons is packaged by default, so no installation is necessary.
-            Want to use Ionicons without Ionic
+          {vid.snippet.description}
           </p>
         </div>
       </div>

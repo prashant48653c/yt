@@ -5,6 +5,12 @@ import { AppContext } from './App'
 import { fetchData } from './fetch'
 import { Link } from 'react-router-dom'
 import Vidplayer from './Vidplayer'
+import { AiFillYoutube } from "react-icons/ai";
+import { AiOutlineMenu } from "react-icons/ai";
+import {AiOutlineSearch} from "react-icons/ai"
+
+import {AiTwotoneAudio} from "react-icons/ai"
+
 
 
 
@@ -20,11 +26,11 @@ function goToHome(){
    <nav className='nav'>
     <div className="icon-nav">
 		
-		<ion-icon name="menu-outline" className="icons"></ion-icon>
+<AiOutlineMenu size={32} className='icons' />
 		<div className="logo-navbar" onClick={goToHome}  >
 
 			<Link to="/">
-			<ion-icon name="logo-youtube"  className="icons"></ion-icon>
+			<AiFillYoutube size={32} className='icon' />
 			<h1 style={{display:'inline'}}>YouTube <sup>NP</sup> </h1>
 			</Link>
 			
@@ -37,11 +43,13 @@ function goToHome(){
 		<div className="search-icon">
 		<input  className="search-video" defaultValue="" onChange={(e)=>{setselectedCategory(e.target.value)}} placeholder="Search"  name="searchbar" />
 		<Link to="/result">
-		<ion-icon name="search-outline" onClick={()=>{fetchData}} className="icon icon-search"></ion-icon>
+		
+<AiOutlineSearch size={32} onClick={()=>{fetchData}} className="icon icon-search"  />
+
 		</Link>
 		
 		</div>
-		<ion-icon name="mic-outline" className="icon  mic-icon"></ion-icon>
+		<AiTwotoneAudio name="mic-outline" size={32} className="icon  mic-icon"></AiTwotoneAudio>
 
 
 	</div>

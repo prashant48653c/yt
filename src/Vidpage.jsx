@@ -5,6 +5,7 @@ import { AppContext } from "./App";
 import { createBrowserRouter, RouterProvider, Link } from "react-router-dom";
 import { fetchData } from "./fetch";
 import Vidplayer from "./Vidplayer";
+import {HiUserCircle} from "react-icons/hi2";
 
 const Vidpage = ({ vid, getDataVidpage, videoId }) => {
   const { setselectedCategory } = useContext(AppContext);
@@ -29,13 +30,18 @@ const Vidpage = ({ vid, getDataVidpage, videoId }) => {
 
     
     <section className="video" onClick={handleClick}>
+      <div className="no">
       <img
         src={vid.snippet.thumbnails.high.url}
-        alt="thumbnail"
+        alt="thumbnail" loading="lazy"
         className="port-image suggestion-img"
       />
+      </div>
+     
+
+
       <div className="vid-info">
-        <img src={gurenge} alt="" className="user-img" />
+        <HiUserCircle size={32} className="user-img" />
         <div>
           <h4 className="vid-title">
             {vid.snippet.title.length < 55

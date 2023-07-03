@@ -21,12 +21,15 @@ function App() {
   const [change, setchange] = useState(true);
   const [channalidvalue, setchannalidvalue] = useState("");
   const [channalDetail, setchannalDetail] = useState([]);
+const [channalVideos,setchannalVideos]=useState([])
+
   useEffect(() => {
     if (change) {
       fetchData(`search?part=snippet&q=${selectedCategory}`).then((res) => {
         setvideos(res.items);
         setIsLoading(false);
         console.log("Data got succesfully");
+        console.log(res.items)
         setchange(false);
       });
     }
@@ -44,6 +47,18 @@ function App() {
       );
     }
   }, [channalidvalue]);
+
+  useEffect(()=>{
+    if(channalidvalue ){
+      console.log(channalidvalue , 'channal video')
+      fetchData(`search?channelId=${channalidvalue}&part=snippet%2Cid&order=date`).then((res)=>{
+        console.log(res.items)
+        setchannalVideos(res.items)
+    
+      })
+    }
+    
+  },[channalidvalue])
 
   function getDataVidpage(data, channalID) {
     const fromVidpageId = data;
@@ -76,6 +91,7 @@ function App() {
             change,
             channalDetail,
             setchannalidvalue,
+            setClickedVideoId
           }}
         >
           <Navbar
@@ -127,6 +143,7 @@ function App() {
               element={
                 <section className="channel-page">
                   <Channel
+                  channalVideos={channalVideos}
                     channalidvalue={channalidvalue}
                     channalDetail={channalDetail}
                   />
