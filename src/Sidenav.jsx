@@ -5,16 +5,10 @@ const Sidenav = () => {
 
     <aside className="sidebar">
 
-	<section className="sidebar-container">
+	<section className="sidebar-container  scroll-container">
 		
 	
-	<div className="sidebar_box">
-		<img src="viteLogo" alt="" className="icons" />
-		<div className="logo">
-			<ion-icon name="logo-youtube" className="icons"></ion-icon>
-			<h1>YouTube </h1><sup>NP</sup>
-		</div>
-	</div>
+	
 
 
 	<div className="sidebar-menus">

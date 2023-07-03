@@ -32,7 +32,7 @@ const Vidpage = ({ vid, getDataVidpage, videoId }) => {
     <section className="video" onClick={handleClick}>
       <div className="no">
       <img
-        src={vid.snippet.thumbnails.high.url}
+        src={vid.snippet.thumbnails.high.url  }
         alt="thumbnail" loading="lazy"
         className="port-image suggestion-img"
       />

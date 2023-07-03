@@ -22,6 +22,7 @@ function App() {
   const [channalidvalue, setchannalidvalue] = useState("");
   const [channalDetail, setchannalDetail] = useState([]);
 const [channalVideos,setchannalVideos]=useState([])
+const [opensidebar, setopensidebar] = useState(false)
 
   useEffect(() => {
     if (change) {
@@ -91,7 +92,9 @@ const [channalVideos,setchannalVideos]=useState([])
             change,
             channalDetail,
             setchannalidvalue,
-            setClickedVideoId
+            setClickedVideoId,
+            setopensidebar,
+            opensidebar
           }}
         >
           <Navbar
@@ -99,7 +102,17 @@ const [channalVideos,setchannalVideos]=useState([])
             setselectedCategory={setselectedCategory}
           />
 
+      
+         
+        {
+          opensidebar &&  <Sidenav/>
+        }
+
+
+          
+
           <Routes>
+
             <Route
               path="/"
               element={

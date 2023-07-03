@@ -16,21 +16,33 @@ import {AiTwotoneAudio} from "react-icons/ai"
 
 const Navbar = ({selectedCategory,setselectedCategory}) => {
 
+	const {setopensidebar}=useContext(AppContext)
+	const {opensidebar}=useContext(AppContext)
+
 function goToHome(){
 	setselectedCategory('lofi')
 }
-	
+const sidenavBtnClick=()=>{
+if(opensidebar){
+	setopensidebar(false)
+	console.log("sidenav close")
+
+}else{
+	setopensidebar(true)
+	console.log('sidebar open')
+}
+}
 
 	
   return (
    <nav className='nav'>
     <div className="icon-nav">
 		
-<AiOutlineMenu size={32} className='icons' />
+<AiOutlineMenu size={32} className='icons open-sidebar' onClick={sidenavBtnClick} />
 		<div className="logo-navbar" onClick={goToHome}  >
 
 			<Link to="/">
-			<AiFillYoutube size={32} className='icon' />
+			<AiFillYoutube size={32} className='icon ' />
 			<h1 style={{display:'inline'}}>YouTube <sup>NP</sup> </h1>
 			</Link>
 			
@@ -41,7 +53,7 @@ function goToHome(){
 
 	<div className="search-bar-nav">
 		<div className="search-icon">
-		<input  className="search-video" defaultValue="" onChange={(e)=>{setselectedCategory(e.target.value)}} placeholder="Search"  name="searchbar" />
+		<input  className="search-video" autoComplete='off' defaultValue="" onChange={(e)=>{setselectedCategory(e.target.value)}} placeholder="Search"  name="searchbar" />
 		<Link to="/result">
 		
 <AiOutlineSearch size={32} onClick={()=>{fetchData}} className="icon icon-search"  />

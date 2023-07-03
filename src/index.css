@@ -24,19 +24,7 @@ position: relative;
 
 
 
-.sidebar{
-	
-	z-index: 111;
-	position: absolute;
-	top: 0%;
-	left: 0%;
-background: black;
-	overflow-y: scroll;
-	padding: .5rem 1rem;
-	height: 100vh;
-	width: 17%;
-	border: .1px solid navajowhite;
-}
+
 .sidebar_box{
 	display: flex;
 	align-items: center;	
@@ -97,8 +85,25 @@ hr{
 	font-size: 1.7rem;
 	margin: .6rem 1rem;
 }
+
+
 .sidebar-container{
-margin: 1rem;
+margin: 2rem 1rem;
+overflow-y: scroll;
+height: 100vh;
+z-index: 111;
+	position: fixed;
+	top: 4%;
+	left: 0%;
+background-color: black;
+	
+	padding: .5rem 1rem;
+	height: 100vh;
+	width: 17%;
+	
+}
+.open-sidebar{
+	cursor: pointer;
 }
 .final-text{
 	margin: 1rem;
