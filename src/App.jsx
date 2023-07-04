@@ -10,6 +10,7 @@ import Vidplayer from "./Vidplayer";
 import Searchresult from "./Searchresult";
 import Channel from "./Channel";
 import Vidsuggestion from "./Vidsuggestion";
+import Minibar from "./Minibar";
 
 export const AppContext = createContext();
 
@@ -105,7 +106,7 @@ const [opensidebar, setopensidebar] = useState(false)
       
          
         {
-          opensidebar &&  <Sidenav/>
+         opensidebar? <Sidenav/> : <Minibar/>
         }
 
 

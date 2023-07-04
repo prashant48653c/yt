@@ -113,7 +113,7 @@ background-color: black;
 .videos{
 
 	flex-wrap: wrap;
-	margin:.8rem ;
+	margin:.8rem 2rem ;
 	display: flex;
 	justify-content:flex-end;
 	align-items: flex-start;
@@ -552,4 +552,34 @@ width: 100%;
 .username{
 	padding-top: .2rem;
 
+}
+
+
+/*small sidenav*/
+.minibar{
+	display: flex;
+	overflow: hidden;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	text-align: center;
+	width: 7%;
+	gap: .4rem;
+	padding: 0;
+	height: 100vh;
+}
+.menu-small{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+height: 8rem;
+width: 7rem;
+
+
+border-radius: 2rem;
+}
+.menu-small:hover{
+	background-color: #333333;
+	cursor: pointer;
 }
