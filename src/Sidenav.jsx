@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AppContext } from './App'
+import { Link } from "react-router-dom";
 
 const Sidenav = () => {
+	const {clickedVideoId,setClickedVideoId}=useContext(AppContext)
+
+
+
+
   return (
 
+	
     <aside className="sidebar">
 
 	<section className="sidebar-container  scroll-container">
@@ -43,12 +51,12 @@ const Sidenav = () => {
 			</p>
 		</div>
 
-		<div className="sidebar-menu">
+		<Link to='/history' className="sidebar-menu">
 			<ion-icon name="albums-outline" className="icon"></ion-icon>
 			<p className="menu_text">
 				History
 			</p>
-		</div>
+		</Link>
 
 		<div className="sidebar-menu">
 			<ion-icon name="bag-outline" className="icon"></ion-icon>

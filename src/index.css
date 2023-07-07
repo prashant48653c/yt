@@ -125,7 +125,7 @@ background-color: black;
 
 	background-color: rgb(20, 19, 19);
 	cursor: pointer;
-width:37rem;
+width:35rem;
 	min-height: 30rem;
 	max-height: 100%;
 	border-radius: 1rem;
@@ -175,8 +175,8 @@ button:hover{
 }
 .no{
 	overflow: hidden;
-	height: 30rem;
-	width: 37rem;
+	height: 25rem;
+	width: 35rem;
 padding-bottom: .6rem;
 
 }

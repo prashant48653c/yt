@@ -11,6 +11,7 @@ import Searchresult from "./Searchresult";
 import Channel from "./Channel";
 import Vidsuggestion from "./Vidsuggestion";
 import Minibar from "./Minibar";
+import History from "./History";
 
 export const AppContext = createContext();
 
@@ -24,6 +25,7 @@ function App() {
   const [channalDetail, setchannalDetail] = useState([]);
 const [channalVideos,setchannalVideos]=useState([])
 const [opensidebar, setopensidebar] = useState(false)
+const [historyvideo, sethistoryvideo] = useState([])
 
   useEffect(() => {
     if (change) {
@@ -76,6 +78,11 @@ const [opensidebar, setopensidebar] = useState(false)
     setClickedVideoId(fromResult);
   }
 
+  function getDataVidplayer(data){
+console.log('data from vidplayer' , data)
+sethistoryvideo(data)
+  }
+
   if (isLoading) {
     return <div>loading</div>;
   }
@@ -94,8 +101,10 @@ const [opensidebar, setopensidebar] = useState(false)
             channalDetail,
             setchannalidvalue,
             setClickedVideoId,
+            clickedVideoId,
             setopensidebar,
-            opensidebar
+            opensidebar,
+            historyvideo
           }}
         >
           <Navbar
@@ -134,7 +143,7 @@ const [opensidebar, setopensidebar] = useState(false)
 
             <Route
               path="/vidplayer"
-              element={<Vidplayer clickedVideoId={clickedVideoId} />}
+              element={<Vidplayer getDataVidplayer={getDataVidplayer} clickedVideoId={clickedVideoId} />}
             />
 
             <Route
@@ -151,7 +160,7 @@ const [opensidebar, setopensidebar] = useState(false)
               }
             />
 
-            {console.log(channalDetail)}
+         
             <Route
               path="/channal"
               element={
@@ -164,6 +173,10 @@ const [opensidebar, setopensidebar] = useState(false)
                 </section>
               }
             />
+
+            <Route path="/history" element={  <section className="results" > <History  />  </section>  } ></Route>
+
+
           </Routes>
         </AppContext.Provider>
       </Router>

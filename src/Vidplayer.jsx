@@ -11,7 +11,7 @@ import Comment from "./Comment";
 import {HiUserCircle} from "react-icons/hi2";
 
 
-const Vidplayer = ({ clickedVideoId }) => {
+const Vidplayer = ({getDataVidplayer, clickedVideoId }) => {
 
 
 
@@ -36,22 +36,25 @@ const {setchannalidvalue}=useContext(AppContext)
 const [totalcomment, settotalcomment] = useState('')
 
   const [comments, setcomments] = useState([]);
-
+const [savethevideo, setsavethevideo] = useState([])
   useEffect(() => {
     const newid = videoid;
 
     fetchData(
       `videos?part=contentDetails%2Csnippet%2Cstatistics&id=${newid}`
     ).then((detail) => {
+      if(detail.items[0]){
+        setsavethevideo(detail.items[0])
+        setviddetail(detail.items[0].snippet.localized.description)
+        setvideotitle(detail.items[0].snippet.localized.title)
+        setchannalName(detail.items[0].snippet.channelTitle)
+        setview(detail.items[0].statistics.viewCount)
+        settotalcomment(detail.items[0].statistics.commentCount)
+        settime(detail.items[0].snippet.publishedAt)
+        setchannalid(detail.items[0].snippet.channelId)
+        console.log(detail.items)
+      }
      
-     setviddetail(detail.items[0].snippet.localized.description)
-     setvideotitle(detail.items[0].snippet.localized.title)
-     setchannalName(detail.items[0].snippet.channelTitle)
-     setview(detail.items[0].statistics.viewCount)
-     settotalcomment(detail.items[0].statistics.commentCount)
-     settime(detail.items[0].snippet.publishedAt)
-     setchannalid(detail.items[0].snippet.channelId)
-     console.log(detail.items)
     });
 
     fetchData(`search?relatedToVideoId=${newid}&part=id%2Csnippet`).then(
@@ -77,16 +80,25 @@ const [totalcomment, settotalcomment] = useState('')
    
   }, [videoid]);
 
+
+
+  const getVidDetails=(e)=>{
+    setsavethevideo(savethevideo)
+    getDataVidplayer(savethevideo)
+    console.log(savethevideo)
+  }
+
   if (isLoading) {
     return <div>loading</div>;
   }
 
+
   return (
-    <section className="whole-vidplayer">
+    <section className="whole-vidplayer"  >
       <article className="vidplayer">
         <section className="video-player-full">
           <div className="video-player">
-            <iframe
+            <iframe onLoad={getVidDetails}
               className="port-image-vidplayer"
               src={`https://www.youtube.com/embed/${videoid}`}
               title="YouTube video player"
@@ -108,7 +120,7 @@ const [totalcomment, settotalcomment] = useState('')
 
                 <div>
 
-                  <h3 className="channel-name-vidplayer"  onClick={setchannalidvalue(channalid)} >{channalName}</h3>
+                  <h3 className="channel-name-vidplayer"  onClick={ ()=> setchannalidvalue(channalid)} >{channalName}</h3>
                   <em>1.4M Subscribers</em>
                 </div>
 
