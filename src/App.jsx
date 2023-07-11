@@ -12,10 +12,24 @@ import Channel from "./Channel";
 import Vidsuggestion from "./Vidsuggestion";
 import Minibar from "./Minibar";
 import History from "./History";
+import { useNavigate } from "react-router-dom";
+import Signin from "./signup/Signin";
+import Logout from "./signup/Logout";
+
 
 export const AppContext = createContext();
 
 function App() {
+
+  const [userData, setuserData] = useState('')
+
+if(userData == false){
+ return <Signin setuserData={setuserData} />
+}
+
+  
+
+
   const [selectedCategory, setselectedCategory] = useState("lofi");
   const [videos, setvideos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -23,9 +37,11 @@ function App() {
   const [change, setchange] = useState(true);
   const [channalidvalue, setchannalidvalue] = useState("");
   const [channalDetail, setchannalDetail] = useState([]);
-const [channalVideos,setchannalVideos]=useState([])
-const [opensidebar, setopensidebar] = useState(false)
-const [historyvideo, sethistoryvideo] = useState([])
+  const [channalVideos, setchannalVideos] = useState([]);
+  const [opensidebar, setopensidebar] = useState(false);
+  const [historyvideo, sethistoryvideo] = useState([]);
+
+ 
 
   useEffect(() => {
     if (change) {
@@ -33,16 +49,15 @@ const [historyvideo, sethistoryvideo] = useState([])
         setvideos(res.items);
         setIsLoading(false);
         console.log("Data got succesfully");
-        console.log(res.items)
+        // console.log(res.items);
         setchange(false);
       });
     }
   }, [setClickedVideoId]);
 
   useEffect(() => {
-
     if (channalidvalue) {
-      console.log(channalidvalue ,'from app ')
+      console.log(channalidvalue, "from app ");
       fetchData(`channels?part=snippet%2Cstatistics&id=${channalidvalue}`).then(
         (res) => {
           const info = res.items[0];
@@ -52,17 +67,17 @@ const [historyvideo, sethistoryvideo] = useState([])
     }
   }, [channalidvalue]);
 
-  useEffect(()=>{
-    if(channalidvalue ){
-      console.log(channalidvalue , 'channal video')
-      fetchData(`search?channelId=${channalidvalue}&part=snippet%2Cid&order=date`).then((res)=>{
-        console.log(res.items)
-        setchannalVideos(res.items)
-    
-      })
+  useEffect(() => {
+    if (channalidvalue) {
+      // console.log(channalidvalue, "channal video");
+      fetchData(
+        `search?channelId=${channalidvalue}&part=snippet%2Cid&order=date`
+      ).then((res) => {
+        // console.log(res.items);
+        setchannalVideos(res.items);
+      });
     }
-    
-  },[channalidvalue])
+  }, [channalidvalue]);
 
   function getDataVidpage(data, channalID) {
     const fromVidpageId = data;
@@ -78,14 +93,20 @@ const [historyvideo, sethistoryvideo] = useState([])
     setClickedVideoId(fromResult);
   }
 
-  function getDataVidplayer(data){
-console.log('data from vidplayer' , data)
-sethistoryvideo(data)
+  function getDataVidplayer(data) {
+    // console.log("data from vidplayer", data);
+    const mydata = data;
+    sethistoryvideo(mydata);
   }
 
+
+
+
   if (isLoading) {
-    return <div>loading</div>;
+    return <div className="alert-message"> Loading... </div>;
   }
+
+ 
 
   return (
     <>
@@ -104,25 +125,19 @@ sethistoryvideo(data)
             clickedVideoId,
             setopensidebar,
             opensidebar,
-            historyvideo
+            historyvideo,
+          
           }}
         >
           <Navbar
             selectedCategory={selectedCategory}
             setselectedCategory={setselectedCategory}
           />
+        <Logout/>
 
-      
-         
-        {
-         opensidebar? <Sidenav/> : <Minibar/>
-        }
-
-
-          
+          {opensidebar ? <Sidenav /> : <Minibar />}
 
           <Routes>
-
             <Route
               path="/"
               element={
@@ -143,7 +158,12 @@ sethistoryvideo(data)
 
             <Route
               path="/vidplayer"
-              element={<Vidplayer getDataVidplayer={getDataVidplayer} clickedVideoId={clickedVideoId} />}
+              element={
+                <Vidplayer
+                  getDataVidplayer={getDataVidplayer}
+                  clickedVideoId={clickedVideoId}
+                />
+              }
             />
 
             <Route
@@ -160,13 +180,12 @@ sethistoryvideo(data)
               }
             />
 
-         
             <Route
               path="/channal"
               element={
                 <section className="channel-page">
                   <Channel
-                  channalVideos={channalVideos}
+                    channalVideos={channalVideos}
                     channalidvalue={channalidvalue}
                     channalDetail={channalDetail}
                   />
@@ -174,9 +193,15 @@ sethistoryvideo(data)
               }
             />
 
-            <Route path="/history" element={  <section className="results" > <History  />  </section>  } ></Route>
-
-
+            <Route
+              path="/history"
+              element={
+                <section className="results">
+                  {" "}
+                  <History />{" "}
+                </section>
+              }
+            ></Route>
           </Routes>
         </AppContext.Provider>
       </Router>

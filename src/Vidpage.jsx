@@ -5,7 +5,7 @@ import { AppContext } from "./App";
 import { createBrowserRouter, RouterProvider, Link } from "react-router-dom";
 import { fetchData } from "./fetch";
 import Vidplayer from "./Vidplayer";
-import {HiUserCircle} from "react-icons/hi2";
+import { HiUserCircle } from "react-icons/hi2";
 
 const Vidpage = ({ vid, getDataVidpage, videoId }) => {
   const { setselectedCategory } = useContext(AppContext);
@@ -15,30 +15,27 @@ const Vidpage = ({ vid, getDataVidpage, videoId }) => {
   const getChannalIdVidpage = (e) => {};
   const handleClick = (e) => {
     const channalid = vid.snippet.channelId;
-    console.log(vid.snippet.channelId);
+    // console.log(vid.snippet.channelId);
     setchannelId(channalid);
-    console.log("clicked");
+    // console.log("clicked");
     const updatedVideoId = vid.id.videoId;
 
     setSelectedVideoId(updatedVideoId);
     getDataVidpage(updatedVideoId, channalid);
 
-    console.log(updatedVideoId);
+    // console.log(updatedVideoId);
   };
 
   return (
-
-    
     <section className="video" onClick={handleClick}>
       <div className="no">
-      <img
-        src={vid.snippet.thumbnails.high.url  }
-        alt="thumbnail" loading="lazy"
-        className="port-image suggestion-img"
-      />
+        <img
+          src={vid.snippet.thumbnails.high.url}
+          alt="thumbnail"
+          loading="lazy"
+          className="port-image suggestion-img"
+        />
       </div>
-     
-
 
       <div className="vid-info">
         <HiUserCircle size={32} className="user-img" />
