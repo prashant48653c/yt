@@ -5,11 +5,18 @@ import { useNavigate } from "react-router-dom";
 
 const Sidenav = () => {
   const navigate = useNavigate()
-  const { clickedVideoId,setselectedCategory, setClickedVideoId } = useContext(AppContext);
+  const { clickedVideoId,setselectedCategory,setchange, setClickedVideoId } = useContext(AppContext);
   const goToHome = (e) => {
     e.preventDefault()
 	  navigate("/");
 	};
+  const goToChannal=e=>{
+    e.preventDefault()
+    setchange(true)
+    setselectedCategory(e.target.innerHTML)
+    navigate("/result")
+
+  }
  
 
   return (
@@ -70,12 +77,12 @@ const Sidenav = () => {
 
         <div className="sidebar-menu"  >
           <ion-icon name="home-outline" className="icon"></ion-icon>
-          <p className="menu_text" >MrBeast</p>
+          <p className="menu_text" onClick={goToChannal} >MrBeast</p>
         </div>
 
         <div className="sidebar-menu">
           <ion-icon name="barbell-outline" className="icon"></ion-icon>
-          <p className="menu_text">CodeWithHarry</p>
+          <p className="menu_text" onClick={goToChannal}>CodeWithHarry</p>
         </div>
 
         <div className="sidebar-menu">
@@ -84,17 +91,17 @@ const Sidenav = () => {
             className="icon"
           ></ion-icon>
 
-          <p className="menu_text">BnfTV</p>
+          <p className="menu_text" onClick={goToChannal}>BnfTV</p>
         </div>
 
         <div className="sidebar-menu">
           <ion-icon name="home-outline" className="icon"></ion-icon>
-          <p className="menu_text">WWE</p>
+          <p className="menu_text" onClick={goToChannal}>WWE</p>
         </div>
 
         <div className="sidebar-menu">
           <ion-icon name="home-outline" className="icon"></ion-icon>
-          <p className="menu_text">Clever programming</p>
+          <p className="menu_text" onClick={goToChannal}>Clever programming</p>
         </div>
 
         <hr />

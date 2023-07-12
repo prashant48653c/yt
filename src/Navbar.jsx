@@ -13,9 +13,11 @@ import { AiTwotoneAudio } from "react-icons/ai";
 
 const Navbar = ({ selectedCategory, setselectedCategory }) => {
   const { setopensidebar } = useContext(AppContext);
-  const { opensidebar } = useContext(AppContext);
+  const { opensidebar ,setchange} = useContext(AppContext);
 
-  function goToHome() {
+  function goToHome(e) {
+    e.preventDefault()
+    setchange(true)
     setselectedCategory("lofi");
   }
   const sidenavBtnClick = () => {

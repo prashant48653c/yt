@@ -29,6 +29,9 @@ const Vidplayer = ({ getDataVidplayer, clickedVideoId }) => {
 
   const [comments, setcomments] = useState([]);
   const [savethevideo, setsavethevideo] = useState([]);
+
+
+  
   useEffect(() => {
     const newid = videoid;
 
@@ -67,7 +70,9 @@ const Vidplayer = ({ getDataVidplayer, clickedVideoId }) => {
     setsavethevideo(savethevideo);
     getDataVidplayer(savethevideo);
     console.log(savethevideo);
+    
   };
+
 
   if (isLoading) {
     return <div>loading</div>;
