@@ -24,11 +24,37 @@ const Signin = ({ setuserData }) => {
 
   return (
     <>
-      <div className="signup-container">
-        <button className="signup-google"  onClick={handleGoogleClick}>
-          SignUp with Google
-        </button>
-      </div>
+    <section className="signup-container">
+	
+
+	<div className="signup-box">
+		
+		<div className="signup-area">
+			 <form action="" className="form">
+			 	<div className="create-account">
+  <span className="highlight">Create</span> an Account
+</div>
+
+			 	<input type="text" className=" my-input username-signup" name="username"/>
+			 	<input type="email" className=" my-input username-signup" name="email"/>
+			 	<input type="password" className=" my-input username-signup" name="password"/>
+			 	<div className="agreement">
+			 		<input type="checkbox" name="check"/>
+			 	<p className="terms">I agree to all terms and condition</p>
+			 	</div>
+			 	
+			 	<input className="submit-signup my-button" type="submit" value="CREATE ACCOUNT" />
+        <button className="my-button" onClick={handleGoogleClick} >SignUp with Google</button>
+			 </form>
+		</div>
+
+		<div className="more-info">
+			<h2>StreamZone</h2>
+			<p className="headline">Streamzone aims to provide similar features to YouTube while offering a unique experience for its users.</p>
+			<button className="btn">Learn More</button>
+		</div>
+	</div>
+</section>
     </>
   );
 };

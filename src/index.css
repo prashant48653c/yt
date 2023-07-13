@@ -322,7 +322,12 @@ border-radius: 1.6rem;
 	margin: .6rem 0;
 }
 /*navbar css*/
-
+.profile-nav{
+	width: 4rem;
+	height: 4rem;
+	border-radius: 44rem;
+	cursor: pointer;
+}
 .nav{
 	position: sticky;
 	top: 0%;
@@ -596,9 +601,158 @@ border-radius: 2rem;
 
 
 }
-.signup-google, .logout{
-text-align: center;
-position: fixed;
-top: 50%;
-left: 50%;
+
+.signup-container{
+	
+	height: 100vh;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.signup-box{
+
+	border: 1px solid blue;
+	display: flex;
+	height: 80vh;
+		gap: 2rem;
+	width: 60%;
+}
+.signup-area{
+		justify-content: center;
+	align-items: center;
+	width: 60%;
+	border: 1px solid red;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+
+}
+.form{
+	gap: 1rem;
+	text-align: center;
+		width: 80%;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+}
+
+.more-info{
+	width: 100%;
+	background: red;
+	border-radius: 2rem;
+}
+.agreement{
+	display: flex;
+}
+
+.my-button {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  background-color: #E53935;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.my-button:hover {
+  background-color: #B71C1C;
+}
+
+.my-button:active {
+  background-color: #3e8e41;
+}
+
+.terms{
+	margin: 0 .6rem;
+}
+
+.my-input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  color: #333333;
+  background-color: #f2f2f2;
+  border: none;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.my-input:focus {
+  outline: none;
+  border-color: #E53935;
+  background-color: #ffffff;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+.create-account {
+  text-align: center;
+  font-size: 20px;
+}
+
+.highlight {
+  color: #E53935;
+  font-weight: bold;
+}
+
+
+
+
+.more-info {
+	margin-top: 8rem;
+  text-align: center;
+  background-color: #000000;
+  padding: 3rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.more-info h2 {
+  color: #FF3D00;
+  font-size: 36px;
+  margin-bottom: 10px;
+ 
+}
+
+
+
+.more-info .headline {
+  color: #FF3D00;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.more-info .btn {
+  background-color: #FF3D00;
+  color: #ffffff;
+  padding: 12px 24px;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  
+}
+
+
+
+.more-info .btn:hover {
+  background-color: #E53935;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.more-info .btn:active {
+  background-color: #C62828;
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }

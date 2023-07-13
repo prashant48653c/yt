@@ -28,7 +28,7 @@ const Vidplayer = ({ getDataVidplayer, clickedVideoId }) => {
   const [totalcomment, settotalcomment] = useState("");
 
   const [comments, setcomments] = useState([]);
-  const [savethevideo, setsavethevideo] = useState([]);
+  const [savethevideo, setsavethevideo] = useState("");
 
 
   
@@ -67,10 +67,13 @@ const Vidplayer = ({ getDataVidplayer, clickedVideoId }) => {
   }, [videoid]);
 
   const getVidDetails = (e) => {
-    setsavethevideo(savethevideo);
+    e.preventDefault()
+    setsavethevideo([savethevideo]);
     getDataVidplayer(savethevideo);
-    console.log(savethevideo);
-    
+   const vidHis=savethevideo
+   console.log(vidHis)
+    // localStorage.setItem( 'history')
+localStorage.setItem("history",vidHis)
   };
 
 

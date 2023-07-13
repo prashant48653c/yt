@@ -15,16 +15,15 @@ import History from "./History";
 import { useNavigate } from "react-router-dom";
 import Signin from "./signup/Signin";
 import Logout from "./signup/Logout";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 
 
 export const AppContext = createContext();
 
 function App() {
-  const notify = () => toast("Welcome to StreamZone");
+  
 
-  const [userData, setuserData] = useState('')
+  const [userData, setuserData] = useState([])
 
 
 
@@ -48,11 +47,15 @@ function App() {
    }
 
    useEffect(()=>{
-    setuserData(localStorage.getItem("data"))
-    const data=(userData)
+ 
+const data=(localStorage.getItem("data"))
+    const dataobj=JSON.parse(data)
     
+   setuserData(dataobj)
+   },[])
+
+
    
-   })
 
 
   useEffect(() => {
@@ -128,6 +131,7 @@ function App() {
             setselectedCategory,
             selectedCategory,
             setvideos,
+            userData,
             videos,
             setchange,
             change,
@@ -149,7 +153,7 @@ function App() {
             setselectedCategory={setselectedCategory}
           />
           
-        <Logout/>
+       
 
           {opensidebar ? <Sidenav /> : <Minibar />}
 

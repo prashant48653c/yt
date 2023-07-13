@@ -14,29 +14,24 @@ import {HiUserCircle} from "react-icons/hi2";
 const History = () => {
   
   const [keys, setkeys] = useState([]);
-  const getAllLocalStorageItems = () => {
-    const newKeys = Object.values(localStorage);
-    setkeys(newKeys);
-  };
   
-  // Usage
-  useEffect(() => {
-    getAllLocalStorageItems();
-  }, []);
+  const getHistory= localStorage.getItem("history")
+ console.log(getHistory)
+ 
 
 
   return (
     <>
     {
-     ( keys ) ?
+     (3 ==4 ) ?
   keys.map((vid,i)=>{
-  
+
     return (  
 
       <article className="search-result" key={i} >
       <div className="video-vidplayer-suggestion result-vid">
         <img loading="lazy"
-          src={gurenge}
+          src={vid.snippet.thumbnails.high.url}
           alt=""
           className="port-image-suggestion img-result"
         />

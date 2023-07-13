@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { AppContext } from "./App";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import Logout from "./signup/Logout";
 
 const Sidenav = () => {
   const navigate = useNavigate()
@@ -30,7 +31,7 @@ const Sidenav = () => {
 
           <div className="sidebar-menu">
             <ion-icon name="barbell-outline" className="icon"></ion-icon>
-            <p className="menu_text">Shorts</p>
+            <a target="_blank" href="https://buy.stripe.com/test_6oE3egfYSeLWaZy4gg" className="menu_text">Premium</a>
           </div>
 
           <div className="sidebar-menu">
@@ -160,7 +161,7 @@ const Sidenav = () => {
 
         <div className="sidebar-menu">
           <ion-icon name="document-outline" className="icon"></ion-icon>
-          <p className="menu_text">Send Feedback </p>
+          <Logout/> 
         </div>
 
         <div className="final-text">

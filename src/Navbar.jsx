@@ -12,9 +12,9 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { AiTwotoneAudio } from "react-icons/ai";
 
 const Navbar = ({ selectedCategory, setselectedCategory }) => {
-  const { setopensidebar } = useContext(AppContext);
+  const { setopensidebar,userData } = useContext(AppContext);
   const { opensidebar ,setchange} = useContext(AppContext);
-
+// console.log(userData)
   function goToHome(e) {
     e.preventDefault()
     setchange(true)
@@ -83,10 +83,8 @@ const Navbar = ({ selectedCategory, setselectedCategory }) => {
           name="notifications-outline"
           className="icon hov-icon"
         ></ion-icon>
-        <ion-icon
-          name="person-circle-outline"
-          className="icon hov-icon"
-        ></ion-icon>
+        
+        <img src={userData.user.photoURL} className="profile-nav" alt="prfile-img" />
       </div>
     </nav>
   );
