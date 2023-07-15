@@ -47,10 +47,7 @@ const Channel = ({ channalidvalue, channalDetail, channalVideos }) => {
           <button className="subscribe">Subscribe</button>
         </div>
       </div>
-      <div className="channal-category">
-        <button className="btn">Videos</button>
-        <button className="btn">Playlist</button>
-      </div>
+      
 
       <main className="channal-videos">
         {channalVideos.map((vid, i) => {

@@ -9,6 +9,10 @@ import Vidsuggestion from "./Vidsuggestion";
 import { Link } from "react-router-dom";
 import Comment from "./Comment";
 import { HiUserCircle } from "react-icons/hi2";
+import {AiOutlineLike } from "react-icons/ai"
+import {AiOutlineDislike } from "react-icons/ai"
+import {BsThreeDots} from 'react-icons/bs'
+import {PiShareFat} from 'react-icons/pi'
 
 const Vidplayer = ({ getDataVidplayer, clickedVideoId }) => {
   const { setchannalidvalue } = useContext(AppContext);
@@ -47,7 +51,7 @@ const Vidplayer = ({ getDataVidplayer, clickedVideoId }) => {
         settotalcomment(detail.items[0].statistics.commentCount);
         settime(detail.items[0].snippet.publishedAt);
         setchannalid(detail.items[0].snippet.channelId);
-        console.log(detail.items);
+       
       }
     });
 
@@ -65,15 +69,20 @@ const Vidplayer = ({ getDataVidplayer, clickedVideoId }) => {
 
     setIsLoading(false);
   }, [videoid]);
+  const [count,setcount]=useState(1)
 
   const getVidDetails = (e) => {
-    e.preventDefault()
-    setsavethevideo([savethevideo]);
-    getDataVidplayer(savethevideo);
-   const vidHis=savethevideo
-   console.log(vidHis)
-    // localStorage.setItem( 'history')
-localStorage.setItem("history",vidHis)
+    if(count >=1){
+      e.preventDefault()
+      setsavethevideo([savethevideo]);
+      getDataVidplayer(savethevideo);
+     const vidHis=JSON.stringify(savethevideo)
+     console.log(vidHis)
+      // localStorage.setItem( 'history')
+  localStorage.setItem(`history${count}`,vidHis)
+     setcount(count + 1)
+    }
+  
   };
 
 
@@ -120,21 +129,23 @@ localStorage.setItem("history",vidHis)
               </Link>
 
               <div className="interaction-vidplayer">
-                <div className="like-dislike">
-                  <span className="material-symbols-outlined">thumb_up</span>
-                  <span>Like</span>
-                  <span className="material-symbols-outlined">thumb_down</span>
-                </div>
+                <button className="btn like">
+                <AiOutlineLike size={20} />  Like
+                </button>
 
-                <div className="like-dislike ">
-                  <ion-icon name="send-outline" className="icon"></ion-icon>
-                  Share
-                </div>
+                <button className="btn like">
+                <AiOutlineDislike size={20} />  DisLike
+                </button>
+
+                <button className="btn like ">
+                 
+                <PiShareFat size={20} />     Share
+                </button>
+
+              <button className="btn"><BsThreeDots  size={20}/></button>
+
               </div>
-              <ion-icon
-                name="ellipsis-horizontal-outline"
-                className="icon hov-icon"
-              ></ion-icon>
+              
             </div>
 
             <div className="video-detail-vidplayer">
@@ -161,6 +172,18 @@ localStorage.setItem("history",vidHis)
               </div>
             </div>
             <hr />
+
+
+            <div className="other-comment">
+		<img className="user-img" src={gurenge}/>
+		<div className="comment">
+		<p className="username">{"The Developer"} </p>
+
+			<p>{"Hello! I am the developer.Nice to meet you! I hope you like my StreamZone Web Application.Its my first React Application.Thanks for viewing my Appliaction"}</p>
+		</div>
+	</div>
+
+
             {comments !== undefined &&
               comments.map((comment, i) => {
                 return <Comment key={i} comment={comment} />;

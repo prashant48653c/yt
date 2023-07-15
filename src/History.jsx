@@ -13,18 +13,28 @@ import {HiUserCircle} from "react-icons/hi2";
 
 const History = () => {
   
-  const [keys, setkeys] = useState([]);
+  const [vids, setvids] = useState([]);
+  const [count,setcount]=useState(0)
   
-  const getHistory= localStorage.getItem("history")
- console.log(getHistory)
+
  
+  // const getHistory= localStorage.getItem(`history${count}`)
+  //   const historyvideo=JSON.parse(getHistory)
+  //  console.log(historyvideo)
+  //  setvids(historyvideo)
+
+   
+
+
+
 
 
   return (
     <>
     {
-     (3 ==4 ) ?
-  keys.map((vid,i)=>{
+     (vids ) ?
+  vids.map((vid,i)=>{
+    console.log(vid.id)
 
     return (  
 
@@ -49,7 +59,7 @@ const History = () => {
 
           <p className="info">
             
-         {vid}
+        hi
           </p>
         </div>
       </div>

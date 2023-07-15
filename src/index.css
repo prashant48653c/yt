@@ -20,6 +20,7 @@ position: relative;
 	color: white;
 	height: 100vh;
 	width: 100%;
+	padding: 0 2rem;
 }
 
 
@@ -31,11 +32,16 @@ position: relative;
 	justify-content: center;
 	gap: 1rem;
 	margin-bottom:1rem ;
+	border: 2px solid #3e8e41;
 	
 
 }
 h1{
-font-size: 2rem;
+	font-family: Arial, sans-serif;
+	font-weight: bold;
+	font-size: 2rem;
+	
+	
 }
 .icons{
 	font-size: 3.2rem;
@@ -88,19 +94,23 @@ hr{
 
 
 .sidebar-container{
-margin: 2rem 1rem;
+
 overflow-y: scroll;
 height: 100vh;
 z-index: 111;
 	position: fixed;
-	top: 4%;
-	left: 0%;
+	top: 7%;
+	left: 1%;
 background-color: black;
 	
-	padding: .5rem 1rem;
+	padding: .5rem 0;
 	height: 100vh;
 	width: 17%;
 	
+}
+.sidebar{
+	margin: 2rem ;
+	background-color: red;
 }
 .open-sidebar{
 	cursor: pointer;
@@ -112,12 +122,14 @@ background-color: black;
 
 .videos{
 
+	max-width: 100%;
+
 	flex-wrap: wrap;
-	margin:.8rem 2rem ;
 	display: flex;
 	justify-content:flex-end;
-	align-items: flex-start;
-    gap: 1.6rem;
+	align-items: flex-end;
+    gap: 2rem;
+	padding: .1rem 3rem;
 }
 .video{
 	padding-bottom: 1rem;
@@ -139,6 +151,7 @@ width:35rem;
 
 .vid-title{
 	font-size: 2rem;
+	font-weight: 600;
 
 }
 .vid-info{
@@ -146,6 +159,16 @@ width:35rem;
 	align-items: center;
 	justify-content: center;
 	gap: 1rem;
+}
+.vid-title-suggestion{
+	padding: 1rem 0;
+	font-weight: 600;
+}
+.channal-icon-name{
+	display: flex;
+	align-items: center;
+	gap: .5rem;
+	font-weight: 500;
 }
 .vid-detail{
 	padding: .3rem 0;
@@ -200,7 +223,7 @@ padding-bottom: .6rem;
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
-	height: 100vh;
+	
 	width: 100%;
 
 }
@@ -271,9 +294,10 @@ background-color: var(--hov-black);
 }
 .port-image-suggestion{
 
-width: 320px;
+max-width: 320px;
 height: 120px;
 border-radius: 1.6rem;
+margin-right: .5rem;
 
 }
 .vid-title-suggestion{
@@ -292,16 +316,10 @@ border-radius: 1.6rem;
 	display: flex;
 	gap: 2rem;
 }
-.like-dislike{
+.like{
 	display: flex;
-	cursor: pointer;
 	align-items: center;
-	text-align: center;
-	padding: 0 1.8rem;
-	font-size: 1.5rem;
-	background: white;
-	color: grey;
-	border-radius: 1.6rem;
+	gap: .5rem;
 }
 .video-detail-vidplayer{
 	
@@ -335,19 +353,20 @@ border-radius: 1.6rem;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding:.3rem 2rem ;
+	padding: 0 2rem ;
 	width: 100%;
-	height: 5rem;
-	background: black;
+	height: 5.6rem;
+	background-color: black;
 	margin-bottom: 1.3rem;
 	
 
 }
 .logo-navbar{
-
+cursor: pointer;
 	gap: .6rem;
 	display: flex;
 	align-items: center;
+	justify-content: center;
 }
 .icon-nav{
 	gap: 1.4rem;
@@ -355,11 +374,12 @@ border-radius: 1.6rem;
 	display: flex;
 }
 .setting-nav{
-	margin: 0 1rem;
+
 	display: flex;
-	gap: 2rem;
+	gap: 1.3rem;
 }
 .search-video{
+
 	background: black;
 	color: #EEEEEE;
 	border: none;
@@ -367,18 +387,20 @@ border-radius: 1.6rem;
 	width: 98%;
 	height: 2.6rem;
 	font-size: 1.6rem;
+	padding: 1.5rem ;
 }
 
 .search-bar-nav{
 	width: 46%;
 	display: flex;
+	border-radius: 2rem;
 
 	align-items: center;
 	background: black;
 }
 .mic-icon{
 	border-radius: 33rem;
-	margin-left:.4rem ;
+	margin-left:.9rem ;
 	padding: .8rem;
 }
 .mic-icon:hover{
@@ -419,7 +441,10 @@ border-radius: 1.6rem;
 	gap: .3rem;
 }
 .search-result{
-	width: 70%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
 }
 .vid-title-result{
 	font-weight: 200;
@@ -434,9 +459,11 @@ border-radius: 1.6rem;
 	color:#eee;
 }
 .results{
-	height: 100vh;
+	margin-left: 12rem;
+	
 	display: flex;
 	flex-direction: column;
+	
 }
 .img-result{
 	width: 300px;
@@ -454,10 +481,11 @@ border-radius: 1.6rem;
 
 
 .channel-page{
+	margin-left: 12rem;
 	display: flex;
 	justify-content: flex-end;
 	flex-direction: column;
-	width: 100%;
+	max-width: 100%;
 	}
 	.channel-cover{
 		width: 100%;
@@ -556,6 +584,7 @@ width: 100%;
 }
 .username{
 	padding-top: .2rem;
+	font-weight: 600;
 
 }
 
@@ -755,4 +784,17 @@ border-radius: 2rem;
   background-color: #C62828;
   transform: translateY(0);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* setting css */
+
+.setting{
+	justify-content:center;
+	align-items: flex-start;
+    gap: 1.6rem;
+	height: 100vh;
+
+	background-color: #333333;
 }

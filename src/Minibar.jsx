@@ -2,44 +2,61 @@ import React from 'react'
 import { useNavigate } from "react-router-dom";
 import { useContext,useState,useEffect } from 'react';
 import { AppContext } from './App';
+import { AiOutlineHome } from "react-icons/ai";
+import {TiArrowDown} from "react-icons/ti"
+import {HiOutlineLibrary} from "react-icons/hi"
+import {MdOutlineSubscriptions} from "react-icons/md"
+import {FaHistory} from "react-icons/fa"
+import {AiOutlineSetting} from "react-icons/ai"
 
 const Minibar = () => {
+	const {setopensetting,opensetting} =useContext(AppContext)
 	const navigate = useNavigate()
 
 const goToHome = (e) => {
     e.preventDefault()
 	  navigate("/");
 	};
+
+	const openSetting=e=>{
+		e.preventDefault()
+		if(opensetting){
+			setopensetting(false)
+
+		}else{
+			setopensetting(true)
+		}
+	}
   return (
     <section className="sidebar-container minibar" >
 	<div className="menu-small " onClick={goToHome} >
-		<ion-icon name="notifications-outline" className="icon hov-icon"></ion-icon>
+		<AiOutlineHome  size={40} className="icon hov-icon"></AiOutlineHome>
 
 		Home
 	</div>
 
 	<div className="menu-small">
-		<ion-icon name="notifications-outline" className="icon hov-icon"></ion-icon>
+		<FaHistory size={40} className="icon hov-icon"></FaHistory>
 
 		Shorts
 	</div>
 
 	<div className="menu-small">
-		<ion-icon name="notifications-outline" className="icon hov-icon"></ion-icon>
+		<MdOutlineSubscriptions size={40} className="icon hov-icon"></MdOutlineSubscriptions>
 
 		Subscription
 	</div>
 
 	<div className="menu-small">
-		<ion-icon name="notifications-outline" className="icon hov-icon"></ion-icon>
+		<HiOutlineLibrary size={40} className="icon hov-icon"></HiOutlineLibrary>
 
 		Library
 	</div>
 
 	<div className="menu-small">
-		<ion-icon name="notifications-outline" className="icon hov-icon"></ion-icon>
+		<AiOutlineSetting size={40} onClick={openSetting} className="icon hov-icon"></AiOutlineSetting>
 		
-		Downloads
+		Settings
 	</div>
 
 </section>

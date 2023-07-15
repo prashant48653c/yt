@@ -41,10 +41,10 @@ const Vidsuggestion = ({ video, getDataVidsuggestion }) => {
           </h4>
           <div className="vid-detail-suggestion">
             <Link to="/channal" onClick={channalOnclick}>
-              <HiUserCircle size={20} className="icon"></HiUserCircle>
-              {video.snippet.channelTitle}
+           <p className="channal-icon-name"> <HiUserCircle size={20} className="icon"></HiUserCircle>
+              {video.snippet.channelTitle}  </p>   
             </Link>
-            <p className="para">38M view ' 2 years ago</p>
+            
           </div>
         </div>
       </div>

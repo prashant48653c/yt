@@ -22,7 +22,7 @@ const Sidenav = () => {
 
   return (
     <aside className="sidebar">
-      <section className="sidebar-container  scroll-container">
+      <section className="sidebar-container  ">
         <div className="sidebar-menus">
           <div className="sidebar-menu" onClick={goToHome}>
             <ion-icon name="home-outline" className="icon"></ion-icon>
@@ -144,7 +144,7 @@ const Sidenav = () => {
 
         <hr />
 
-        <div className="sidebar-menu">
+        <div className="sidebar-menu ">
           <ion-icon name="settings-outline" className="icon"></ion-icon>
           <p className="menu_text">Settings </p>
         </div>

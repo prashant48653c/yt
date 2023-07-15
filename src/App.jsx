@@ -18,6 +18,7 @@ import Logout from "./signup/Logout";
 
 
 
+
 export const AppContext = createContext();
 
 function App() {
@@ -38,7 +39,8 @@ function App() {
   const [channalidvalue, setchannalidvalue] = useState("");
   const [channalDetail, setchannalDetail] = useState([]);
   const [channalVideos, setchannalVideos] = useState([]);
-  const [opensidebar, setopensidebar] = useState(false);
+  const [opensidebar, setopensidebar] = useState(true);
+  const [opensetting, setopensetting] = useState(false)
   const [historyvideo, sethistoryvideo] = useState([]);
 
  
@@ -142,6 +144,8 @@ const data=(localStorage.getItem("data"))
             setopensidebar,
             opensidebar,
             historyvideo,
+            setopensetting,
+            opensetting
           
           }}
         >
@@ -154,8 +158,9 @@ const data=(localStorage.getItem("data"))
           />
           
        
+           {opensidebar && <Minibar/> }
 
-          {opensidebar ? <Sidenav /> : <Minibar />}
+           {opensetting &&  <Sidenav/> }
 
           <Routes>
             <Route
@@ -185,6 +190,8 @@ const data=(localStorage.getItem("data"))
                 />
               }
             />
+
+          
 
             <Route
               path="/result"

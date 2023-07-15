@@ -61,11 +61,16 @@ const Searchresult = ({
                     to="/channal"
                     onClick={() => setchannalidvalue(vid.snippet.channelId)}
                   >
+                    <p className="channal-icon-name">
                     <HiUserCircle
-                      size={20}
+                      size={25}
                       className="icon channel-logo"
                     ></HiUserCircle>
                     {vid.snippet.channelTitle}
+                    </p>
+                   
+
+
                   </Link>
                 </div>
                 <p className="para">38M view ' 2 years ago</p>

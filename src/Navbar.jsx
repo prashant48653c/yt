@@ -3,48 +3,67 @@ import viteLogo from "/vite.svg";
 import { useContext } from "react";
 import { AppContext } from "./App";
 import { fetchData } from "./fetch";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import Vidplayer from "./Vidplayer";
 import { AiFillYoutube } from "react-icons/ai";
 import { AiOutlineMenu } from "react-icons/ai";
 import { AiOutlineSearch } from "react-icons/ai";
-
+import {AiOutlineVideoCameraAdd} from "react-icons/ai"
 import { AiTwotoneAudio } from "react-icons/ai";
+import {   AiOutlineBell} from "react-icons/ai";
 
 const Navbar = ({ selectedCategory, setselectedCategory }) => {
-  const { setopensidebar,userData } = useContext(AppContext);
-  const { opensidebar ,setchange} = useContext(AppContext);
-// console.log(userData)
+
+
+const navigate=useNavigate();
+
+  const { setopensidebar,opensetting,userData } = useContext(AppContext);
+  const { opensidebar ,setopensetting,setchange} = useContext(AppContext);
+
+
+
+
+
+
+
+
   function goToHome(e) {
     e.preventDefault()
     setchange(true)
     setselectedCategory("lofi");
+    navigate("/")
   }
   const sidenavBtnClick = () => {
-    if (opensidebar) {
+
+    if (opensidebar ) {
       setopensidebar(false);
-      console.log("sidenav close");
-    } else {
+		setopensetting(false)
+
+     
+    }
+    else   {
       setopensidebar(true);
-      console.log("sidebar open");
+     
     }
   };
+
+  
 
   return (
     <nav className="nav">
       <div className="icon-nav">
         <AiOutlineMenu
-          size={32}
+          size={28}
           className="icons open-sidebar"
           onClick={sidenavBtnClick}
         />
         <div className="logo-navbar" onClick={goToHome}>
-          <Link to="/">
+          
             <AiFillYoutube size={32} className="icon " />
             <h1 style={{ display: "inline" }}>
               StreamZone <sup>NP</sup>{" "}
             </h1>
-          </Link>
+        
         </div>
       </div>
 
@@ -62,7 +81,7 @@ const Navbar = ({ selectedCategory, setselectedCategory }) => {
           />
           <Link to="/result">
             <AiOutlineSearch
-              size={32}
+              size={25}
               onClick={() => {
                 fetchData;
               }}
@@ -72,19 +91,19 @@ const Navbar = ({ selectedCategory, setselectedCategory }) => {
         </div>
         <AiTwotoneAudio
           name="mic-outline"
-          size={32}
+          size={35}
           className="icon  mic-icon"
         ></AiTwotoneAudio>
       </div>
 
       <div className="setting-nav">
-        <ion-icon name="videocam-outline" className="icon hov-icon"></ion-icon>
-        <ion-icon
-          name="notifications-outline"
+        <AiOutlineVideoCameraAdd  className="icon hov-icon" size={40} />
+        <AiOutlineBell
+       size={40}
           className="icon hov-icon"
-        ></ion-icon>
+        ></AiOutlineBell>
         
-        <img src={userData.user.photoURL} className="profile-nav" alt="prfile-img" />
+        <img src={userData.user.photoURL}   className="profile-nav" alt="profile-img" />
       </div>
     </nav>
   );
