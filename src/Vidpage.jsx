@@ -7,7 +7,7 @@ import { fetchData } from "./fetch";
 import Vidplayer from "./Vidplayer";
 import { HiUserCircle } from "react-icons/hi2";
 
-const Vidpage = ({ vid, getDataVidpage, videoId }) => {
+const Vidpage = ({ vid,i, getDataVidpage, videoId }) => {
   const { setselectedCategory } = useContext(AppContext);
   const [selectedVideoId, setSelectedVideoId] = useState("");
   const [channelId, setchannelId] = useState("");
@@ -50,7 +50,7 @@ const Vidpage = ({ vid, getDataVidpage, videoId }) => {
             <Link to="/channal">
               <em onClick={getChannalIdVidpage}>{vid.snippet.channelTitle}</em>
             </Link>
-            <p className="para">38M view ' 2 years ago</p>
+            <p className="para">1{i}M view ' 2 years ago</p>
           </div>
         </div>
       </div>

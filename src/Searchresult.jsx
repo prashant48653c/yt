@@ -73,7 +73,7 @@ const Searchresult = ({
 
                   </Link>
                 </div>
-                <p className="para">38M view ' 2 years ago</p>
+                <p className="para">3{i}M view ' 2 month ago</p>
 
                 <p className="info">{vid.snippet.description}</p>
               </div>

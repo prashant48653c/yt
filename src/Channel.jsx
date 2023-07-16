@@ -40,11 +40,11 @@ const Channel = ({ channalidvalue, channalDetail, channalVideos }) => {
               <p className="channel-detail">
                 {statitic.subscriberCount} subscribers {statitic.videoCount}{" "}
                 videos <br />
-                {aboutChannal}
+                {aboutChannal.slice(0,100)+"..."}
               </p>
             </div>
           </div>
-          <button className="subscribe">Subscribe</button>
+          <button className="btn">Subscribe</button>
         </div>
       </div>
       

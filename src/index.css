@@ -32,7 +32,7 @@ position: relative;
 	justify-content: center;
 	gap: 1rem;
 	margin-bottom:1rem ;
-	border: 2px solid #3e8e41;
+
 	
 
 }
@@ -121,14 +121,18 @@ background-color: black;
 }
 
 .videos{
-
+border: 1px solid green;
 	max-width: 100%;
 
-	flex-wrap: wrap;
+	/* flex-wrap: wrap;
 	display: flex;
 	justify-content:flex-end;
 	align-items: flex-end;
-    gap: 2rem;
+    gap: 2rem; */
+
+	display: grid;
+	grid-template-columns: repeat(4,1fr);
+	grid-gap: 2rem;
 	padding: .1rem 3rem;
 }
 .video{
@@ -137,8 +141,8 @@ background-color: black;
 
 	background-color: rgb(20, 19, 19);
 	cursor: pointer;
-width:35rem;
-	min-height: 30rem;
+width:30rem;
+	min-height: 27rem;
 	max-height: 100%;
 	border-radius: 1rem;
 	
@@ -204,11 +208,11 @@ padding-bottom: .6rem;
 
 }
 .port-image{
-	width: 100%;
-    height: 100%;
+	max-width: 100%;
+    max-height: 100%;
 	border-radius: 1.4rem;
 	transition: all .2s linear;
-	object-fit: cover;
+	object-fit: contain;
 	object-position: center;
 
 }
@@ -243,7 +247,7 @@ padding-bottom: .6rem;
 	width: 90%;
 }
 .suggestion-vidplayer{
-	border: 1px solid wheat;
+	
 	height: 100vh;
 	
 	width: 30%;
@@ -276,7 +280,7 @@ padding-bottom: .6rem;
 }
 .video-vidplayer-suggestion{
 	display: flex;
-	border: .1px solid white;
+	
 	margin: 1rem;
 	width: 100%;
 	background-color: var(--black);
@@ -348,7 +352,8 @@ margin-right: .5rem;
 }
 .nav{
 	position: sticky;
-	top: 0%;
+	top: 0;
+	left: 0;
 	z-index: 111111;
 	display: flex;
 	align-items: center;
@@ -394,6 +399,7 @@ cursor: pointer;
 	width: 46%;
 	display: flex;
 	border-radius: 2rem;
+	border: .4px solid var(--black);
 
 	align-items: center;
 	background: black;
@@ -414,7 +420,7 @@ cursor: pointer;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border: 1px solid grey;
+	
 	border-radius: 3rem;
 	
 }
@@ -553,7 +559,7 @@ margin: 2rem 0;
 }
 .write-comment{
 	gap: 1rem;
-	border: 1px solid white;
+	
 		max-width: 100%;
 	display: flex;
 	align-items: center;
@@ -623,6 +629,7 @@ border-radius: 2rem;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	height: 100vh;
 	margin: 2rem 0;
 }
 .alert-message img{
@@ -788,13 +795,137 @@ border-radius: 2rem;
 
 
 
-/* setting css */
+/* media queries */
 
-.setting{
-	justify-content:center;
-	align-items: flex-start;
-    gap: 1.6rem;
-	height: 100vh;
 
-	background-color: #333333;
-}
+
+@media (max-width:1380px){
+	html{
+
+		font-size: 60%;
+	}
+	
+
+	}
+
+	@media (max-width:1300px){
+		html{
+			font-size: 58.5%;
+		}
+	
+		}
+
+		@media (max-width:1260px){
+			html{
+				font-size: 57.5%;
+			}
+			.no{
+				width: 37rem;
+			}
+			.videos{
+				margin: auto 5rem;
+			}
+		
+			}
+
+			@media (max-width:1230px){
+				html{
+					font-size: 56.5%;
+				}
+			
+				}
+
+				@media (max-width:1200px){
+					html{
+						font-size: 55.5%;
+					}
+					.videos{
+					grid-template-columns: repeat(3,1fr);
+						gap: 1rem;
+					}
+				
+					}
+
+
+
+					@media (max-width:900px){
+						html{
+							font-size: 54%;
+						}
+					}
+
+					@media (max-width:870px){
+						html{
+							font-size: 62%;
+						}
+						
+						.del-icon{
+							display: none;
+						}
+						.videos{
+							display: flex;
+							flex-wrap: wrap;
+							justify-content: center;
+							align-items: flex-start;
+							gap: 1rem;
+						}
+						.minibar{
+							width: 10%;
+						}
+					}
+
+					@media (max-width:800px){
+						html{
+							font-size: 59%;
+						}
+					}
+
+					@media (max-width:700px){
+						html{
+							font-size: 55%;
+						}
+						.open-sidebar{
+							display: none;
+						}
+					}
+					@media (max-width:700px){
+						html{
+							font-size: 59%;
+						}
+						.minibar{
+							width: 15%;
+						}
+						.videos{
+							width: 100%;
+							display: flex;
+							flex-direction: colume;
+						}
+						.video{
+						width: 40rem;
+						}
+						.suggestion-img{
+							width: 100%;
+						}
+						.no{
+							width: 40rem;
+							height: 35rem;
+						}
+						
+						
+					}
+
+					@media(max-width:670px){
+						.minibar{
+							display: none;
+						}
+						.no{
+							width: 100%;
+							margin: auto;
+						}
+						.videos{
+							display: flex;
+							justify-content: center;
+							align-items: flex-start;
+							flex-direction: column;
+						}
+					}

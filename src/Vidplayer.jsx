@@ -13,6 +13,11 @@ import {AiOutlineLike } from "react-icons/ai"
 import {AiOutlineDislike } from "react-icons/ai"
 import {BsThreeDots} from 'react-icons/bs'
 import {PiShareFat} from 'react-icons/pi'
+import HashLoader from "react-spinners/ClipLoader";
+
+
+
+
 
 const Vidplayer = ({ getDataVidplayer, clickedVideoId }) => {
   const { setchannalidvalue } = useContext(AppContext);
@@ -69,6 +74,7 @@ const Vidplayer = ({ getDataVidplayer, clickedVideoId }) => {
 
     setIsLoading(false);
   }, [videoid]);
+  const[appLoader,setappLoader]=useState(false)
   const [count,setcount]=useState(1)
 
   const getVidDetails = (e) => {
@@ -81,14 +87,20 @@ const Vidplayer = ({ getDataVidplayer, clickedVideoId }) => {
       // localStorage.setItem( 'history')
   localStorage.setItem(`history${count}`,vidHis)
      setcount(count + 1)
+     setappLoader(true)
     }
   
   };
+  const override = {
+    display: "block",
+    margin: "0 auto",
+    borderColor: "red",
+    color:"red"
+  };
 
 
-  if (isLoading) {
-    return <div>loading</div>;
-  }
+
+
 
   return (
     <section className="whole-vidplayer">
@@ -202,7 +214,7 @@ const Vidplayer = ({ getDataVidplayer, clickedVideoId }) => {
             <Link to="/vidplayer" key={i}>
               <Vidsuggestion
                 video={video}
-                getDataVidsuggestion={getDataVidsuggestion}
+                getDataVidsuggestion={getDataVidsuggestion} i={i}
               />
             </Link>
           );

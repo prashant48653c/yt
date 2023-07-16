@@ -16,6 +16,9 @@ import { useNavigate } from "react-router-dom";
 import Signin from "./signup/Signin";
 import Logout from "./signup/Logout";
 
+import HashLoader from "react-spinners/ClipLoader";
+
+
 
 
 
@@ -26,7 +29,12 @@ function App() {
 
   const [userData, setuserData] = useState([])
 
-
+  const override = {
+    display: "block",
+    margin: "0 auto",
+    borderColor: "red",
+    color:"red"
+  };
 
   
 
@@ -120,7 +128,16 @@ const data=(localStorage.getItem("data"))
 
 
   if (isLoading) {
-    return <div className="alert-message"> Loading... </div>;
+    return <div className="alert-message">
+      
+      
+      <HashLoader
+       cssOverride={override}
+       size={130}
+   
+    data-testid="loader" />
+    
+     </div>  ;
   }
 
  
@@ -171,7 +188,7 @@ const data=(localStorage.getItem("data"))
                     <Link to="/vidplayer" key={i}>
                       {" "}
                       <Vidpage
-                        getDataVidpage={getDataVidpage}
+                        getDataVidpage={getDataVidpage} i={i}
                         vid={vid}
                         videoId={vid.id.videoId}
                       />{" "}

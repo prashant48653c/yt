@@ -8,7 +8,7 @@ import Vidplayer from "./Vidplayer";
 import gurenge from "/gurenge.jpg";
 import { HiUserCircle } from "react-icons/hi2";
 
-const Vidsuggestion = ({ video, getDataVidsuggestion }) => {
+const Vidsuggestion = ({ video,i, getDataVidsuggestion }) => {
   const { setchannalidvalue } = useContext(AppContext);
 
   const [suggestionId, setsuggestionId] = useState("");
@@ -44,7 +44,7 @@ const Vidsuggestion = ({ video, getDataVidsuggestion }) => {
            <p className="channal-icon-name"> <HiUserCircle size={20} className="icon"></HiUserCircle>
               {video.snippet.channelTitle}  </p>   
             </Link>
-            
+          <p className="para"> 1{i}M view . 3 month ago</p>
           </div>
         </div>
       </div>

@@ -92,15 +92,15 @@ const navigate=useNavigate();
         <AiTwotoneAudio
           name="mic-outline"
           size={35}
-          className="icon  mic-icon"
+          className="icon  mic-icon del-icon"
         ></AiTwotoneAudio>
       </div>
 
       <div className="setting-nav">
-        <AiOutlineVideoCameraAdd  className="icon hov-icon" size={40} />
+        <AiOutlineVideoCameraAdd  className="icon del-icon hov-icon" size={40} />
         <AiOutlineBell
        size={40}
-          className="icon hov-icon"
+          className="icon hov-icon del-icon"
         ></AiOutlineBell>
         
         <img src={userData.user.photoURL}   className="profile-nav" alt="profile-img" />
