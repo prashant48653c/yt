@@ -1,11 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { auth, Provider } from "./config";
 import { signInWithPopup } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import App from "../App";
 
 const Signin = ({ setuserData }) => {
     
   const [value, setvalue] = useState("");
+  const [email, setemail] = useState('')
+  const [pass, setpass] = useState('')
+
+  const handleEmailClick=(e)=>{
+e.preventDefault();
+signInWithEmailAndPassword(auth,email,pass).then((data)=>{
+	console.log(data)
+	const newdata=true
+     
+	localStorage.setItem("data",newdata)
+	window.location.reload()
+})
+
+  }
 
   const handleGoogleClick = (e) => {
     e.preventDefault();
@@ -13,7 +28,7 @@ const Signin = ({ setuserData }) => {
    const newdata=JSON.stringify(data)
      
       localStorage.setItem("data",newdata)
-      console.log(data);
+    //   console.log(data);
       window.location.reload()
      
     
@@ -36,14 +51,14 @@ const Signin = ({ setuserData }) => {
 </div>
 
 			 	<input type="text" className=" my-input username-signup" name="username"/>
-			 	<input type="email" className=" my-input username-signup" name="email"/>
-			 	<input type="password" className=" my-input username-signup" name="password"/>
+			 	<input type="email " onChange={(e)=>setemail(e.target.value)} value={email} className=" my-input username-signup" name="email"/>
+			 	<input type="password"   onChange={(e)=>setpass(e.target.value)} value={pass} className=" my-input username-signup" name="password"/>
 			 	<div className="agreement">
 			 		<input type="checkbox" name="check"/>
 			 	<p className="terms">I agree to all terms and condition</p>
 			 	</div>
 			 	
-			 	<input className="submit-signup my-button" type="submit" value="CREATE ACCOUNT" />
+			 	<input className="submit-signup my-button" onClick={handleEmailClick} type="submit" value="CREATE ACCOUNT" />
         <button className="my-button" onClick={handleGoogleClick} >SignUp with Google</button>
 			 </form>
 		</div>

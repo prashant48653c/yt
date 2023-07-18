@@ -71,6 +71,7 @@ const Vidplayer = ({ getDataVidplayer, clickedVideoId }) => {
     ).then((videoComment) => {
       setcomments(videoComment.items);
     });
+    window.scrollTo(0, 0);
 
     setIsLoading(false);
   }, [videoid]);

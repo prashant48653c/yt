@@ -75,7 +75,7 @@ const Searchresult = ({
                 </div>
                 <p className="para">3{i}M view ' 2 month ago</p>
 
-                <p className="info">{vid.snippet.description}</p>
+                <p className="info">{(vid.snippet.description.slice(0,400))}</p>
               </div>
             </div>
           </article>
