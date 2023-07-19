@@ -102,8 +102,20 @@ const navigate=useNavigate();
        size={40}
           className="icon hov-icon del-icon"
         ></AiOutlineBell>
-        
-        <img src={userData.user.photoURL}   className="profile-nav" alt="profile-img" />
+        {
+
+          (userData.user === undefined)?
+
+
+<img src={viteLogo }   className="profile-nav" alt="profile-img" />
+
+:
+<img src={userData.user.photoURL }   className="profile-nav" alt="profile-img" />
+
+
+
+        }
+       
       </div>
     </nav>
   );

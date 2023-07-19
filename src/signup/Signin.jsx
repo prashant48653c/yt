@@ -35,6 +35,14 @@ signInWithEmailAndPassword(auth,email,pass).then((data)=>{
     });
   };
 
+  const continueGuest=e=>{
+	e.preventDefault()
+	localStorage.setItem("data",true)
+	window.location.reload()
+	
+
+  }
+
 
 
   return (
@@ -60,6 +68,8 @@ signInWithEmailAndPassword(auth,email,pass).then((data)=>{
 			 	
 			 	<input className="submit-signup my-button" onClick={handleEmailClick} type="submit" value="CREATE ACCOUNT" />
         <button className="my-button" onClick={handleGoogleClick} >SignUp with Google</button>
+        <button className="my-button" onClick={continueGuest} >Continue as Guest</button>
+
 			 </form>
 		</div>
 

@@ -23,7 +23,7 @@ const Channel = ({ channalidvalue, channalDetail, channalVideos }) => {
       setstatitic(channalDetail.statistics);
     }
   }, [channalDetail]);
-
+  
   return (
     <>
       <div className="cover">
