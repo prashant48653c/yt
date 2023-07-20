@@ -7,16 +7,18 @@ import { fetchData } from "./fetch";
 import Vidplayer from "./Vidplayer";
 import gurenge from "/gurenge.jpg";
 import { HiUserCircle } from "react-icons/hi2";
+import { useNavigate } from "react-router-dom";
 
 const Vidsuggestion = ({ video,i, getDataVidsuggestion }) => {
   const { setchannalidvalue } = useContext(AppContext);
 
   const [suggestionId, setsuggestionId] = useState("");
-
+const navigate=useNavigate()
   const handleOnClick = (e) => {
     const vidId = video.id.videoId;
     setsuggestionId(vidId);
     getDataVidsuggestion(vidId);
+    navigate("/vidplayer")
     // console.log(vidId);
   };
 

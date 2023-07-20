@@ -213,14 +213,14 @@ const data=(localStorage.getItem("data"))
             <Route
               path="/result"
               element={
-                <Link to="/vidplayer">
+              
                   <Searchresult
                     selectedCategory={selectedCategory}
                     setvideos={setvideos}
                     getDataResult={getDataResult}
                     videos={videos}
                   />
-                </Link>
+                
               }
             />
 

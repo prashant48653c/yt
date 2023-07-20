@@ -5,6 +5,7 @@ import gurenge from "/gurenge.jpg";
 import { fetchData } from "./fetch";
 import { Link } from "react-router-dom";
 import { HiUserCircle } from "react-icons/hi2";
+import { useNavigate } from "react-router-dom";
 
 const Searchresult = ({
   selectedCategory,
@@ -17,6 +18,9 @@ const Searchresult = ({
   const [vidid, setvidid] = useState("");
   const { setchange } = useContext(AppContext);
   const { change } = useContext(AppContext);
+
+
+  const navigate=useNavigate()
 
   useEffect(() => {
     fetchData(`search?part=snippet&q=${selectedCategory}`).then((res) => {
@@ -41,6 +45,7 @@ const Searchresult = ({
           setvidid(vidId);
           getDataResult(vidId);
           console.log(vidId);
+          navigate("/vidplayer")
         };
 
         return (

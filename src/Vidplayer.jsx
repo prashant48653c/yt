@@ -14,7 +14,7 @@ import {AiOutlineDislike } from "react-icons/ai"
 import {BsThreeDots} from 'react-icons/bs'
 import {PiShareFat} from 'react-icons/pi'
 import HashLoader from "react-spinners/ClipLoader";
-
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -25,7 +25,7 @@ const Vidplayer = ({ getDataVidplayer, clickedVideoId }) => {
   const [suggestedvideos, setsuggestedvideos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [videoid, setvideoid] = useState(clickedVideoId);
-
+const navigate=useNavigate()
   // state for each property of video
 
   const [viddetail, setviddetail] = useState([]);
@@ -107,6 +107,8 @@ const Vidplayer = ({ getDataVidplayer, clickedVideoId }) => {
     <section className="whole-vidplayer">
       <article className="vidplayer">
         <section className="video-player-full">
+
+          <div className="in">
           <div className="video-player">
             <iframe
               onLoad={getVidDetails}
@@ -123,8 +125,8 @@ const Vidplayer = ({ getDataVidplayer, clickedVideoId }) => {
             <h3 className="video-title-vidplayer">{videotitle}</h3>
 
             <div className="detailing">
-              <Link to="/channal">
-                <div className="channel-vidplayer">
+              
+                <div className="channel-vidplayer" onClick={()=>navigate("/channal")}>
                   <HiUserCircle size={20} className="icons"></HiUserCircle>
 
                   <div>
@@ -139,7 +141,7 @@ const Vidplayer = ({ getDataVidplayer, clickedVideoId }) => {
 
                   <div className="subscribe">Subscribe</div>
                 </div>
-              </Link>
+              
 
               <div className="interaction-vidplayer">
                 <button className="btn like">
@@ -171,6 +173,8 @@ const Vidplayer = ({ getDataVidplayer, clickedVideoId }) => {
               </details>
             </div>
           </div>
+          </div>
+        
 
           {/* comments will start from here */}
 
@@ -212,12 +216,12 @@ const Vidplayer = ({ getDataVidplayer, clickedVideoId }) => {
           }
 
           return (
-            <Link to="/vidplayer" key={i}>
-              <Vidsuggestion
+            
+              <Vidsuggestion key={i}
                 video={video}
                 getDataVidsuggestion={getDataVidsuggestion} i={i}
               />
-            </Link>
+          
           );
         })}
       </aside>
