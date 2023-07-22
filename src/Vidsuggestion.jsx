@@ -37,7 +37,7 @@ const navigate=useNavigate()
           alt="vidd"
           className="port-image-suggestion"
         />
-        <div>
+        <div className="sug-detail">
           <h4 className="vid-title-suggestion">
             {video.snippet.title.slice(0, 55) + "..."}
           </h4>

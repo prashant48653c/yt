@@ -145,7 +145,7 @@ const navigate=useNavigate()
 
               <div className="interaction-vidplayer">
                 <button className="btn like">
-                <AiOutlineLike size={20} />  Like
+                <AiOutlineLike  color="white" size={20} />  Like
                 </button>
 
                 <button className="btn like">
