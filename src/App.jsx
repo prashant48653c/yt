@@ -25,7 +25,7 @@ import HashLoader from "react-spinners/ClipLoader";
 export const AppContext = createContext();
 
 function App() {
-  
+
 
   const [userData, setuserData] = useState([])
 
@@ -33,10 +33,10 @@ function App() {
     display: "block",
     margin: "0 auto",
     borderColor: "red",
-    color:"red"
+    color: "red"
   };
 
-  
+
 
 
   const [selectedCategory, setselectedCategory] = useState("lofi");
@@ -51,21 +51,21 @@ function App() {
   const [opensetting, setopensetting] = useState(false)
   const [historyvideo, sethistoryvideo] = useState([]);
 
- 
-  if(localStorage.getItem("data") == null){
-    return <Signin /> 
-   }
 
-   useEffect(()=>{
- 
-const data=(localStorage.getItem("data"))
-    const dataobj=JSON.parse(data)
-    
-   setuserData(dataobj)
-   },[])
+  if (localStorage.getItem("data") == null) {
+    return <Signin />
+  }
+
+  useEffect(() => {
+
+    const data = (localStorage.getItem("data"))
+    const dataobj = JSON.parse(data)
+
+    setuserData(dataobj)
+  }, [])
 
 
-   
+
 
 
   useEffect(() => {
@@ -73,8 +73,8 @@ const data=(localStorage.getItem("data"))
       fetchData(`search?part=snippet&q=${selectedCategory}`).then((res) => {
         setvideos(res.items);
         setIsLoading(false);
-        console.log("Data got succesfully");
-       
+        // console.log("Data got succesfully");
+
         setchange(false);
       });
     }
@@ -82,7 +82,7 @@ const data=(localStorage.getItem("data"))
 
   useEffect(() => {
     if (channalidvalue) {
-      console.log(channalidvalue, "from app ");
+      // console.log(channalidvalue, "from app ");
       fetchData(`channels?part=snippet%2Cstatistics&id=${channalidvalue}`).then(
         (res) => {
           const info = res.items[0];
@@ -129,18 +129,18 @@ const data=(localStorage.getItem("data"))
 
   if (isLoading) {
     return <div className="alert-message">
-      
-      
+
+
       <HashLoader
-       cssOverride={override}
-       size={130}
-   
-    data-testid="loader" />
-    
-     </div>  ;
+        cssOverride={override}
+        size={130}
+
+        data-testid="loader" />
+
+    </div>;
   }
 
- 
+
 
   return (
     <>
@@ -163,21 +163,21 @@ const data=(localStorage.getItem("data"))
             historyvideo,
             setopensetting,
             opensetting
-          
+
           }}
         >
 
-        
+
           <Navbar
-        
+
             selectedCategory={selectedCategory}
             setselectedCategory={setselectedCategory}
           />
-          
-       
-           {opensidebar && <Minibar/> }
 
-           {opensetting &&  <Sidenav/> }
+
+          {opensidebar && <Minibar />}
+
+          {opensetting && <Sidenav />}
 
           <Routes>
             <Route
@@ -208,19 +208,19 @@ const data=(localStorage.getItem("data"))
               }
             />
 
-          
+
 
             <Route
               path="/result"
               element={
-              
-                  <Searchresult
-                    selectedCategory={selectedCategory}
-                    setvideos={setvideos}
-                    getDataResult={getDataResult}
-                    videos={videos}
-                  />
-                
+
+                <Searchresult
+                  selectedCategory={selectedCategory}
+                  setvideos={setvideos}
+                  getDataResult={getDataResult}
+                  videos={videos}
+                />
+
               }
             />
 
@@ -246,6 +246,13 @@ const data=(localStorage.getItem("data"))
                 </section>
               }
             ></Route>
+
+
+        <Route path="/signin" element={ <Signin/> } ></Route>
+        <Route path="/logout" element={ <Logout/> } ></Route>
+
+
+
           </Routes>
         </AppContext.Provider>
       </Router>

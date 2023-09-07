@@ -9,10 +9,10 @@ import Vidsuggestion from "./Vidsuggestion";
 import { Link } from "react-router-dom";
 import Comment from "./Comment";
 import { HiUserCircle } from "react-icons/hi2";
-import {AiOutlineLike } from "react-icons/ai"
-import {AiOutlineDislike } from "react-icons/ai"
-import {BsThreeDots} from 'react-icons/bs'
-import {PiShareFat} from 'react-icons/pi'
+import { AiOutlineLike } from "react-icons/ai"
+import { AiOutlineDislike } from "react-icons/ai"
+import { BsThreeDots } from 'react-icons/bs'
+import { PiShareFat } from 'react-icons/pi'
 import HashLoader from "react-spinners/ClipLoader";
 import { useNavigate } from "react-router-dom";
 
@@ -20,12 +20,12 @@ import { useNavigate } from "react-router-dom";
 
 
 const Vidplayer = ({ getDataVidplayer, clickedVideoId }) => {
-  const { setchannalidvalue } = useContext(AppContext);
+  const { setchannalidvalue, selectedCategory } = useContext(AppContext);
 
   const [suggestedvideos, setsuggestedvideos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [videoid, setvideoid] = useState(clickedVideoId);
-const navigate=useNavigate()
+  const navigate = useNavigate()
   // state for each property of video
 
   const [viddetail, setviddetail] = useState([]);
@@ -40,7 +40,7 @@ const navigate=useNavigate()
   const [savethevideo, setsavethevideo] = useState("");
 
 
-  
+
   useEffect(() => {
     const newid = videoid;
 
@@ -56,13 +56,14 @@ const navigate=useNavigate()
         settotalcomment(detail.items[0].statistics.commentCount);
         settime(detail.items[0].snippet.publishedAt);
         setchannalid(detail.items[0].snippet.channelId);
-       
+
       }
     });
-
-    fetchData(`search?relatedToVideoId=${newid}&part=id%2Csnippet`).then(
+    fetchData(`search?part=snippet&q=${selectedCategory}
+    `).then(
       (res) => {
         setsuggestedvideos(res.items);
+        // console.log(res)
       }
     );
 
@@ -75,28 +76,28 @@ const navigate=useNavigate()
 
     setIsLoading(false);
   }, [videoid]);
-  const[appLoader,setappLoader]=useState(false)
-  const [count,setcount]=useState(1)
+  const [appLoader, setappLoader] = useState(false)
+  const [count, setcount] = useState(1)
 
   const getVidDetails = (e) => {
-    if(count >=1){
+    if (count >= 1) {
       e.preventDefault()
       setsavethevideo([savethevideo]);
       getDataVidplayer(savethevideo);
-     const vidHis=JSON.stringify(savethevideo)
-     console.log(vidHis)
+      const vidHis = JSON.stringify(savethevideo)
+      //  console.log(vidHis)
       // localStorage.setItem( 'history')
-  localStorage.setItem(`history${count}`,vidHis)
-     setcount(count + 1)
-     setappLoader(true)
+      localStorage.setItem(`history${count}`, vidHis)
+      setcount(count + 1)
+      setappLoader(true)
     }
-  
+
   };
   const override = {
     display: "block",
     margin: "0 auto",
     borderColor: "red",
-    color:"red"
+    color: "red"
   };
 
 
@@ -109,24 +110,24 @@ const navigate=useNavigate()
         <section className="video-player-full">
 
           <div className="in">
-          <div className="video-player">
-            <iframe
-              onLoad={getVidDetails}
-              className="port-image-vidplayer"
-              src={`https://www.youtube.com/embed/${videoid}`}
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              loading="lazy"
-              allowFullScreen
-            ></iframe>
-          </div>
+            <div className="video-player">
+              <iframe
+                onLoad={getVidDetails}
+                className="port-image-vidplayer"
+                src={`https://www.youtube.com/embed/${videoid}`}
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                loading="lazy"
+                allowFullScreen
+              ></iframe>
+            </div>
 
-          <div className="video-information-vidplayer">
-            <h3 className="video-title-vidplayer">{videotitle}</h3>
+            <div className="video-information-vidplayer">
+              <h3 className="video-title-vidplayer">{videotitle}</h3>
 
-            <div className="detailing">
-              
-                <div className="channel-vidplayer" onClick={()=>navigate("/channal")}>
+              <div className="detailing">
+
+                <div className="channel-vidplayer" onClick={() => navigate("/channal")}>
                   <HiUserCircle size={20} className="icons"></HiUserCircle>
 
                   <div>
@@ -141,40 +142,40 @@ const navigate=useNavigate()
 
                   <div className="subscribe">Subscribe</div>
                 </div>
-              
 
-              <div className="interaction-vidplayer">
-                <button className="btn like">
-                <AiOutlineLike  color="white" size={20} />  Like
-                </button>
 
-                <button className="btn like">
-                <AiOutlineDislike size={20} />  DisLike
-                </button>
+                <div className="interaction-vidplayer">
+                  <button className="btn like">
+                    <AiOutlineLike color="white" size={20} />  Like
+                  </button>
 
-                <button className="btn like ">
-                 
-                <PiShareFat size={20} />     Share
-                </button>
+                  <button className="btn like">
+                    <AiOutlineDislike size={20} />  DisLike
+                  </button>
 
-              <button className="btn"><BsThreeDots  size={20}/></button>
+                  <button className="btn like ">
+
+                    <PiShareFat size={20} />     Share
+                  </button>
+
+                  <button className="btn"><BsThreeDots size={20} /></button>
+
+                </div>
 
               </div>
-              
-            </div>
 
-            <div className="video-detail-vidplayer">
-              <p className="date">
-                {view} views {time}
-              </p>
+              <div className="video-detail-vidplayer">
+                <p className="date">
+                  {view} views {time}
+                </p>
 
-              <details className="details ">
-                <p className="moreinfo"> {viddetail} </p>
-              </details>
+                <details className="details ">
+                  <p className="moreinfo"> {viddetail} </p>
+                </details>
+              </div>
             </div>
           </div>
-          </div>
-        
+
 
           {/* comments will start from here */}
 
@@ -192,13 +193,13 @@ const navigate=useNavigate()
 
 
             <div className="other-comment">
-		<img className="user-img" src={gurenge}/>
-		<div className="comment">
-		<p className="username">{"The Developer"} </p>
+              <img className="user-img" src={gurenge} />
+              <div className="comment">
+                <p className="username">{"The Developer"} </p>
 
-			<p>{"Hello! I am the developer.Nice to meet you! I hope you like my StreamZone Web Application.Its my first React Application.Thanks for viewing my Appliaction"}</p>
-		</div>
-	</div>
+                <p>{"Hello! I am the developer.Nice to meet you! I hope you like my StreamZone Web Application.Its my first React Application.Thanks for viewing my Appliaction"}</p>
+              </div>
+            </div>
 
 
             {comments !== undefined &&
@@ -209,19 +210,21 @@ const navigate=useNavigate()
         </section>
       </article>
       <aside className="suggestion-vidplayer">
+
+
         {suggestedvideos.map((video, i) => {
           function getDataVidsuggestion(data) {
             setvideoid(data);
-            console.log(videoid);
+            // console.log(videoid);
           }
 
           return (
-            
-              <Vidsuggestion key={i}
-                video={video}
-                getDataVidsuggestion={getDataVidsuggestion} i={i}
-              />
-          
+
+            <Vidsuggestion key={i}
+              video={video}
+              getDataVidsuggestion={getDataVidsuggestion} i={i}
+            />
+
           );
         })}
       </aside>

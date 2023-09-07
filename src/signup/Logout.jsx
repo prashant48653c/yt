@@ -1,17 +1,17 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 const Logout = () => {
-const navigate= useNavigate()
-    const logOut=e=>{
-        e.preventDefault()
-        localStorage.clear('')
+  // const navigate=useNavigate()
+  const logOut = e => {
+    e.preventDefault()
+    localStorage.clear('')
+    // navigate("/")
+    window.location.reload()
 
-        window.location.reload()
-
-    }
+  }
   return (
     <>
-<p className='logout' onClick={logOut}>Logout</p>
+      <p className='logout' onClick={logOut}>Logout</p>
 
     </>
   )

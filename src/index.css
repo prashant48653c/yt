@@ -727,7 +727,7 @@ button:hover {
   justify-content: center;
   align-items: center;
   width: 60%;
-  border: 1px solid red;
+ 
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -921,13 +921,16 @@ button:hover {
     margin: 1rem 0;
     width: 100%;
   }
+
   .vidplayer {
     width: 100%;
   }
+
   .suggestion-vidplayer {
     width: 100%;
     display: inline-block;
   }
+
   .video-vidplayer-suggestion {
     justify-content: flex-start;
     max-width: 100%;
@@ -971,6 +974,7 @@ button:hover {
 
     padding: 0;
   }
+
   .videos {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -987,6 +991,7 @@ button:hover {
   html {
     font-size: 55%;
   }
+
   .videos {
     display: flex;
   }
@@ -1049,6 +1054,7 @@ button:hover {
   html {
     font-size: 50%;
   }
+
   .nav {
     width: 100%;
   }
@@ -1109,6 +1115,7 @@ button:hover {
     justify-content: flex-start;
     width: 100%;
   }
+
   .results {
     display: flex;
     justify-content: flex-start;
@@ -1116,6 +1123,7 @@ button:hover {
     flex-direction: column;
     width: 100%;
   }
+
   .result-vid {
     display: flex;
     flex-direction: column;
@@ -1125,17 +1133,21 @@ button:hover {
     min-width: 100%;
     object-fit: contain;
   }
+
   .img-result {
     max-width: 100%;
   }
+
   .whole-vidplayer {
     display: flex;
     max-width: 100%;
     margin-left: auto;
   }
+
   .port-image-vidplayer {
     max-width: 100%;
   }
+
   .vidplayer {
     max-width: 100%;
     padding: 0;
@@ -1149,9 +1161,11 @@ button:hover {
 
     flex-direction: column;
   }
+
   .video-player {
     max-width: 100%;
   }
+
   .other-comment {
     display: flex;
   }
@@ -1160,9 +1174,11 @@ button:hover {
     width: 100%;
     height: auto;
   }
+
   .video-detail-vidplayer {
     max-width: 100%;
   }
+
   .suggestion-vidplayer {
     max-width: 100%;
     gap: 2rem;
@@ -1170,6 +1186,7 @@ button:hover {
 
     flex-direction: column;
   }
+
   .video-vidplayer-suggestion {
     height: fit-content;
     padding-bottom: 1rem;
@@ -1192,10 +1209,12 @@ button:hover {
   html {
     font-size: 54%;
   }
+
   .video-detail-vidplayer {
     padding: 0.6rem;
     max-width: 100%;
   }
+
   .whole-vidplayer {
     max-width: 100%;
   }
@@ -1206,6 +1225,7 @@ button:hover {
     font-size: 53%;
   }
 }
+
 @media (max-width: 440px) {
   .video-vidplayer-suggestion {
     margin: auto;
@@ -1216,6 +1236,7 @@ button:hover {
   html {
     font-size: 52%;
   }
+
   .whole-vidplayer {
     margin: 1rem 7rem;
   }
@@ -1247,8 +1268,6 @@ button:hover {
   }
 }
 
-@media (max-width: 280px) {
-}
+@media (max-width: 280px) {}
 
-@media (max-width: 260px) {
-}
+@media (max-width: 260px) {}

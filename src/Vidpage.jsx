@@ -7,12 +7,12 @@ import { fetchData } from "./fetch";
 import Vidplayer from "./Vidplayer";
 import { HiUserCircle } from "react-icons/hi2";
 
-const Vidpage = ({ vid,i, getDataVidpage, videoId }) => {
+const Vidpage = ({ vid, i, getDataVidpage, videoId }) => {
   const { setselectedCategory } = useContext(AppContext);
   const [selectedVideoId, setSelectedVideoId] = useState("");
   const [channelId, setchannelId] = useState("");
 
-  const getChannalIdVidpage = (e) => {};
+  const getChannalIdVidpage = (e) => { };
   const handleClick = (e) => {
     const channalid = vid.snippet.channelId;
     // console.log(vid.snippet.channelId);

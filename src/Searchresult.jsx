@@ -26,7 +26,7 @@ const Searchresult = ({
     fetchData(`search?part=snippet&q=${selectedCategory}`).then((res) => {
       setvideos(res.items);
 
-      console.log("Data got succesfully");
+      // console.log("Data got succesfully");
     });
   }, [selectedCategory]);
 
@@ -44,7 +44,7 @@ const Searchresult = ({
           const vidId = vid.id.videoId;
           setvidid(vidId);
           getDataResult(vidId);
-          console.log(vidId);
+          // console.log(vidId);
           navigate("/vidplayer")
         };
 

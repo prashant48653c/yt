@@ -23,7 +23,7 @@ const Channel = ({ channalidvalue, channalDetail, channalVideos }) => {
       setstatitic(channalDetail.statistics);
     }
   }, [channalDetail]);
-  
+
   return (
     <>
       <div className="cover">
@@ -40,14 +40,14 @@ const Channel = ({ channalidvalue, channalDetail, channalVideos }) => {
               <p className="channel-detail">
                 {statitic.subscriberCount} subscribers {statitic.videoCount}{" "}
                 videos <br />
-                {aboutChannal.slice(0,100)+"..."}
+                {aboutChannal.slice(0, 100) + "..."}
               </p>
             </div>
           </div>
           <button className="btn">Subscribe</button>
         </div>
       </div>
-      
+
 
       <main className="channal-videos">
         {channalVideos.map((vid, i) => {
